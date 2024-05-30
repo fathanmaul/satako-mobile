@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">satako-mobile</string>
+    <string name="app_name">Satako</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="user">User</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash_heading">Welcome to\nSATAKO</string>
+    <string name="splash_subheading">Get started right now to be able\nidentify your staple plant disease.</string>
+    <string name="soil_image">Soil image</string>
+    <string name="get_started">Get Started</string>
+    <string name="back_button">Back Button</string>
+    <string name="login_heading">Let\’s Sign you in.</string>
+    <string name="login_subheading">Sign in with your data that you have enter during your registration</string>
+    <string name="register_heading">Create your own account now.</string>
+    <string name="register_subheading">Before that, please fill this form below.</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="home_card_view">home card view</string>
+    <string name="diagnose_now">Diagnose Now</string>
+    <string name="history_image_view">History Image View</string>
+    <string name="rice_brown_spot">Rice Brown Spot</string>
+    <string name="example_date_time">July 12, 2021 12:00 PM</string>
+    <string name="data_not_found">Data Not Found</string>
+    <string name="diagnose">Diagnose</string>
+    <string name="diagnose_subheading">You can try using your camera or pick on your gallery</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="preview_image_view">Preview image view</string>
+    <string name="start_diagnose">Start Diagnose</string>
 </resources>

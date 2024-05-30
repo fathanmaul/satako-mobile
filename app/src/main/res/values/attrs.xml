@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="edit_text_background" format="color" />
+    <attr name="item_foreground" format="color" />
+    <attr name="item_background" format="color" />
+    <attr name="card_tonal_background" format="color" />
+    <attr name="card_tonal_foreground" format="color" />
+</resources>

@@ -2,4 +2,28 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="green_50">#FFF0FDF4</color>
+    <color name="green_100">#FFDCFCE7</color>
+    <color name="green_200">#FFBBF7D0</color>
+    <color name="green_300">#FF86EFAC</color>
+    <color name="green_400">#FF4ADE80</color>
+    <color name="green_500">#FF22C55E</color>
+    <color name="green_600">#FF16A34A</color>
+    <color name="green_700">#FF15803D</color>
+    <color name="green_800">#FF166534</color>
+    <color name="green_900">#FF14532D</color>
+    <color name="green_950">#FF052E16</color>
+
+    <color name="neutral_600">#FF525252</color>
+    <color name="neutral_500">#FF737373</color>
+
+    <color name="edit_text_background">#FFF4F4F4</color>
+    <color name="edit_text_background_dark">#FF3A3A3A</color>
+
+
+    <!--   Color Scheme -->
+    <color name="primary">@color/green_500</color>
+    <color name="primary_dark">@color/green_400</color>
+    <color name="surface_dark">#FF4B4B4B</color>
 </resources>
