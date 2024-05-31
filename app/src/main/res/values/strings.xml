@@ -32,4 +32,10 @@
     <string name="preview_image_view">Preview image view</string>
     <string name="start_diagnose">Start Diagnose</string>
     <string name="preview">Preview</string>
+    <string name="result">Result</string>
+    <string name="result_subheading">Finally we can analyzing what your plant problem</string>
+    <string name="description">Description</string>
+    <string name="example_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, velit nec scelerisque fringilla, lectus est egestas risus, in vehicula tellus diam eu arcu. Fusce facilisis elit semper, pretium arcu ut, ultrices dolor. Aliquam erat volutpat. Nam egestas leo vitae nunc lobortis sagittis. Phasellus varius iaculis quam at posuere. Integer tempor justo in facilisis tempus.</string>
+    <string name="solution">Solution</string>
+    <string name="predicted_on">Predicted on</string>
 </resources>

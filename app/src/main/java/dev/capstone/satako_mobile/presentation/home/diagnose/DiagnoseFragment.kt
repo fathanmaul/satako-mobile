@@ -32,6 +32,9 @@ class DiagnoseFragment : Fragment() {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
+            buttonDiagnose.setOnClickListener {
+                view.findNavController().navigate(R.id.action_diagnoseFragment_to_resultFragment)
+            }
         }
 
         showPreview(null)

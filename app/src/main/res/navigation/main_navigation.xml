@@ -64,10 +64,23 @@
         android:id="@+id/history_fragment"
         android:name="dev.capstone.satako_mobile.presentation.history.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_history_fragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/diagnoseFragment"
         android:name="dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseFragment"
         android:label="fragment_diagnose"
-        tools:layout="@layout/fragment_diagnose" />
+        tools:layout="@layout/fragment_diagnose" >
+        <action
+            android:id="@+id/action_diagnoseFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="dev.capstone.satako_mobile.presentation.home.diagnose.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
 </navigation>
