@@ -31,4 +31,5 @@
     <string name="gallery">Gallery</string>
     <string name="preview_image_view">Preview image view</string>
     <string name="start_diagnose">Start Diagnose</string>
+    <string name="preview">Preview</string>
 </resources>
