@@ -1,9 +1,49 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Satakomobile" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurface">
+            @color/white
+        </item>
+        <item name="colorSurfaceContainer">@color/green_50</item>
+        <item name="colorSecondaryContainer">@color/green_200</item>
+        <item name="android:windowBackground">@color/white</item>
+
+        <item name="edit_text_background">
+            @color/edit_text_background
+        </item>
+        <item name="item_foreground">@color/neutral_600</item>
+        <item name="card_tonal_background">@color/green_100</item>
+        <item name="card_tonal_foreground">@color/green_700</item>
     </style>
+
+
+    <style name="BackButton" parent="Widget.AppCompat.ImageButton">
+        <item name="tint">@color/green_500</item>
+        <item name="android:background">#00000000</item>
+    </style>
+
+    <style name="TextSubHeading" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/neutral_500</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">15dp</item>
+        <item name="android:drawableTint">
+            @color/white
+        </item>
+        <item name="fontFamily">
+            @font/manrope_semibold
+        </item>
+    </style>
+
 
     <style name="Theme.Satakomobile" parent="Base.Theme.Satakomobile" />
 </resources>
