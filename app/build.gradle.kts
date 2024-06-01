@@ -15,6 +15,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"${project.findProperty("BASE_URL")}\"")
     }
 
     buildTypes {
@@ -32,6 +34,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -51,6 +57,9 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
 
     //testing
     testImplementation(libs.junit)
