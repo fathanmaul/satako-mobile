@@ -5,4 +5,6 @@
     <attr name="item_background" format="color" />
     <attr name="card_tonal_background" format="color" />
     <attr name="card_tonal_foreground" format="color" />
+    <attr name="header_container_background" format="color"/>
+    <attr name="header_container_foreground" format="color"/>
 </resources>

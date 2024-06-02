@@ -30,8 +30,6 @@ class ResultFragment : Fragment() {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
-
-
         }
     }
 
