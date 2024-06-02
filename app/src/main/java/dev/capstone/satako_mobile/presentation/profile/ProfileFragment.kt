@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentProfileBinding
 
@@ -17,6 +19,14 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            btnSettings.setOnClickListener {
+                view.findNavController().navigate(R.id.action_profile_fragment_to_settingsFragment)
+            }
+            btnLogout.setOnClickListener {
+                showLogoutDialog()
+            }
+        }
     }
 
     override fun onCreateView(
@@ -28,22 +38,31 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        requireActivity().onBackPressedDispatcher.addCallback(
-//            this,
-//            object : OnBackPressedCallback(true) {
-//                override fun handleOnBackPressed() {
-//                    view?.findNavController()
-//                        ?.navigate(R.id.action_profile_fragment_to_home_fragment)
-//                }
-//            }
-//        )
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun showLogoutDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { dialog, which ->
+                findNavController().navigate(
+                    R.id.onboardingFragment,
+                    null,
+                    androidx.navigation.navOptions {
+                        popUpTo(R.id.main_navigation) {
+                            inclusive = true
+                        }
+                    })
+
+            }
+            .setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
 }

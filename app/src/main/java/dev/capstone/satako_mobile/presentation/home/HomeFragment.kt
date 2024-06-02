@@ -38,13 +38,13 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    requireActivity().finish()
-                }
-            }
-        )
+//        requireActivity().onBackPressedDispatcher.addCallback(
+//            this,
+//            object : OnBackPressedCallback(true) {
+//                override fun handleOnBackPressed() {
+//                    requireActivity().finish()
+//                }
+//            }
+//        )
     }
 }

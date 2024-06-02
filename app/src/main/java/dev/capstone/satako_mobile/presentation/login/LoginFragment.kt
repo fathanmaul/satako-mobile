@@ -39,7 +39,11 @@ class LoginFragment : Fragment() {
             signInButton.setOnClickListener {
                 view.findNavController().navigate(
                     R.id.action_loginFragment_to_homeFragment, null,
-                    NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
+                    androidx.navigation.navOptions {
+                        popUpTo(R.id.main_navigation) {
+                            inclusive = true
+                        }
+                    }
                 )
                 Toast.makeText(context, "Sign in successful", Toast.LENGTH_SHORT).show()
             }

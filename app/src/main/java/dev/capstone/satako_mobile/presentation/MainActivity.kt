@@ -1,6 +1,7 @@
 package dev.capstone.satako_mobile.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.enableEdgeToEdge
@@ -47,10 +48,8 @@ class MainActivity : AppCompatActivity() {
             val navOptions = androidx.navigation.navOptions {
                 popUpTo(R.id.main_navigation) {
                     inclusive = false
-                    saveState = true
                 }
                 launchSingleTop = true
-                restoreState = true
             }
             when (item.itemId) {
                 R.id.home_fragment -> {
@@ -80,6 +79,7 @@ class MainActivity : AppCompatActivity() {
 
                 else -> bottomNavigationView.visibility = View.GONE
             }
+            logCurrentFragment()
         }
     }
 
@@ -94,5 +94,19 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+        logCurrentFragment()
     }
+
+    private fun logCurrentFragment() {
+        val fragmentManager = supportFragmentManager
+        val fragmentList: List<Fragment> = fragmentManager.fragments
+        val backStackCount = fragmentManager.backStackEntryCount
+
+        Log.i("MainActivity", "Active fragments: ${fragmentList.size}")
+        Log.i("MainActivity", "Back stack entry count: $backStackCount")
+        fragmentList.forEach { fragment ->
+            Log.i("MainActivity", "Fragment: ${fragment.javaClass.simpleName}")
+        }
+    }
+
 }

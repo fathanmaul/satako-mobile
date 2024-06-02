@@ -45,4 +45,7 @@
     <string name="logout">Logout</string>
     <string name="example_email">example@gmail.com</string>
     <string name="example_username">example_username</string>
+    <string name="themes">Themes</string>
+    <string name="language">Language</string>
+    <string name="clear_cache">Clear Cache</string>
 </resources>
