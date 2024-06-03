@@ -3,19 +3,16 @@
     <style name="Base.Theme.Satakomobile" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSurface">
-            @color/white
-        </item>
+        <item name="colorSurface">@color/white</item>
         <item name="colorSurfaceContainer">@color/green_50</item>
         <item name="colorSecondaryContainer">@color/green_200</item>
         <item name="android:windowBackground">@color/white</item>
 
-        <item name="edit_text_background">
-            @color/edit_text_background
-        </item>
+        <item name="edit_text_background">@color/edit_text_background</item>
         <item name="item_foreground">@color/neutral_600</item>
         <item name="card_tonal_background">@color/green_100</item>
         <item name="card_tonal_foreground">@color/green_700</item>
+        <item name="header_container_background">@color/green_500</item>
     </style>
 
 

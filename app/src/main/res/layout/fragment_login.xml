@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_subheading">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_edit_text"
             style="@style/EditText"
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@id/email_text_input_layout"
         app:passwordToggleEnabled="true">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_edit_text"
             style="@style/EditText"
             android:layout_width="match_parent"

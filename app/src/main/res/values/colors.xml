@@ -17,6 +17,10 @@
 
     <color name="neutral_600">#FF525252</color>
     <color name="neutral_500">#FF737373</color>
+    <color name="neutral_900">#FF171717</color>
+
+    <color name="danger">#FFFF4747</color>
+
 
     <color name="edit_text_background">#FFF4F4F4</color>
     <color name="edit_text_background_dark">#FF3A3A3A</color>
