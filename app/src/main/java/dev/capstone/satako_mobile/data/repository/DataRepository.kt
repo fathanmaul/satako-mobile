@@ -37,11 +37,12 @@ class DataRepository private constructor(
     fun register(
         name: String,
         email: String,
-        password: String
+        password: String,
+        confirmPassword: String
     ): LiveData<Result<RegisterResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.register(name, email, password)
+            val response = apiService.register(name, email, password, confirmPassword)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
