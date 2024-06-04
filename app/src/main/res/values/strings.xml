@@ -38,4 +38,14 @@
     <string name="example_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, velit nec scelerisque fringilla, lectus est egestas risus, in vehicula tellus diam eu arcu. Fusce facilisis elit semper, pretium arcu ut, ultrices dolor. Aliquam erat volutpat. Nam egestas leo vitae nunc lobortis sagittis. Phasellus varius iaculis quam at posuere. Integer tempor justo in facilisis tempus.</string>
     <string name="solution">Solution</string>
     <string name="predicted_on">Predicted on</string>
+    <string name="profile">Profile</string>
+    <string name="my_account">My Account</string>
+    <string name="profile_subheading">All your information in this place</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="example_email">example@gmail.com</string>
+    <string name="example_username">example_username</string>
+    <string name="themes">Themes</string>
+    <string name="language">Language</string>
+    <string name="clear_cache">Clear Cache</string>
 </resources>
