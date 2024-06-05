@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dev.capstone.satako_mobile.di.Injection
-import dev.capstone.satako_mobile.viewmodel.login.LoginViewModel
 import dev.capstone.satako_mobile.viewmodel.register.RegisterViewModel
 
 class ViewModelFactory(
@@ -16,10 +15,6 @@ class ViewModelFactory(
         return when {
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(Injection.provideRepository(context)) as T
-            }
-
-            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-                LoginViewModel(Injection.provideRepository(context)) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

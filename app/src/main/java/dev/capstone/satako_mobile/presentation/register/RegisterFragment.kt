@@ -21,7 +21,6 @@ import androidx.navigation.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.BottomSheetBinding
-import dev.capstone.satako_mobile.databinding.FragmentRegisterBinding
 import dev.capstone.satako_mobile.utils.showBottomSheetDialog
 
 
@@ -61,7 +60,11 @@ class RegisterFragment : Fragment() {
                             when (it) {
                                 is Result.Error -> {
                                     showLoading(false)
-                                    
+                                    showBottomSheetDialog(
+                                        requireContext(),
+                                        getString(R.string.register_error),
+                                        R.drawable.error_image
+                                    )
                                 }
 
                                 is Result.Loading -> {
@@ -70,12 +73,14 @@ class RegisterFragment : Fragment() {
 
                                 is Result.Success -> {
                                     showLoading(false)
-                                    Toast.makeText(
+                                    showBottomSheetDialog(
                                         requireContext(),
-                                        it.data.message,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    view.findNavController().popBackStack()
+                                        getString(R.string.success_register),
+                                        R.drawable.success_image,
+                                        onClick = {
+                                            view.findNavController().popBackStack()
+                                        }
+                                    )
                                 }
                             }
                         }

@@ -20,7 +20,6 @@ import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.BottomSheetBinding
 import dev.capstone.satako_mobile.databinding.FragmentLoginBinding
 import dev.capstone.satako_mobile.viewmodel.ViewModelFactory
-import dev.capstone.satako_mobile.viewmodel.login.LoginViewModel
 import dev.capstone.satako_mobile.databinding.FragmentOnboardingBinding
 import dev.capstone.satako_mobile.utils.showBottomSheetDialog
 
@@ -29,9 +28,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private val loginViewModel: LoginViewModel by viewModels {
-        ViewModelFactory(requireContext())
-    }
+
 
 
     override fun onCreateView(
