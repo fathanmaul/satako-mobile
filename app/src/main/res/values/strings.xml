@@ -48,4 +48,12 @@
     <string name="themes">Themes</string>
     <string name="language">Language</string>
     <string name="clear_cache">Clear Cache</string>
+    <string name="image_sheet">Image Sheet</string>
+    <string name="button">Button</string>
+    <string name="title">Title</string>
+    <string name="image_sheet_description">image_sheet_description</string>
+    <string name="okay">Okay</string>
+    <string name="login_failed">Email / Password is incorrect\nPlease try again</string>
+    <string name="please_fill_out_all_forms">Please fill out all forms</string>
+    <string name="success_register">Your account has been registered!</string>
 </resources>

@@ -15,8 +15,10 @@
     <color name="green_900">#FF14532D</color>
     <color name="green_950">#FF052E16</color>
 
-    <color name="neutral_600">#FF525252</color>
     <color name="neutral_500">#FF737373</color>
+    <color name="neutral_600">#FF525252</color>
+    <color name="neutral_700">#FF404040</color>
+    <color name="neutral_800">#FF262626</color>
     <color name="neutral_900">#FF171717</color>
 
     <color name="danger">#FFFF4747</color>

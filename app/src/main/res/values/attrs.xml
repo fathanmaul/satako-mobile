@@ -7,4 +7,5 @@
     <attr name="card_tonal_foreground" format="color" />
     <attr name="header_container_background" format="color"/>
     <attr name="header_container_foreground" format="color"/>
+    <attr name="sheet_container_background" format="color"/>
 </resources>

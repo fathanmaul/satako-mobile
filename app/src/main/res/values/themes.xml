@@ -13,6 +13,7 @@
         <item name="card_tonal_background">@color/green_100</item>
         <item name="card_tonal_foreground">@color/green_700</item>
         <item name="header_container_background">@color/green_500</item>
+        <item name="sheet_container_background">@color/white</item>
     </style>
 
 
@@ -39,6 +40,25 @@
         <item name="fontFamily">
             @font/manrope_semibold
         </item>
+    </style>
+
+    <style name="DangerButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">15dp</item>
+        <item name="backgroundTint">@color/danger</item>
+        <item name="android:drawableTint">
+            @color/white
+        </item>
+        <item name="fontFamily">
+            @font/manrope_semibold
+        </item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 

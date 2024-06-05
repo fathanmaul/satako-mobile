@@ -33,7 +33,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -57,7 +56,6 @@ class ProfileFragment : Fragment() {
                             inclusive = true
                         }
                     })
-
             }
             .setNegativeButton("No") { dialog, which ->
                 dialog.dismiss()
