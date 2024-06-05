@@ -13,154 +13,126 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="24dp"
+            android:orientation="vertical"
             android:paddingTop="35dp"
             android:paddingBottom="100dp">
 
-            <ImageButton
-                android:id="@+id/back_button"
-                style="@style/BackButton"
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:contentDescription="@string/back_button"
-                android:scaleType="fitCenter"
-                android:src="@drawable/bi_arrow_left"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/diagnose_heading"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/header_container"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/manrope_extrabold"
-                android:text="@string/diagnose"
-                android:textSize="38sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/back_button" />
+                android:paddingHorizontal="24dp">
 
-            <TextView
-                android:id="@+id/diagnose_subheading"
-                style="@style/TextSubHeading"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/manrope_light"
-                android:text="@string/diagnose_subheading"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagnose_heading" />
+                <ImageButton
+                    android:id="@+id/back_button"
+                    style="@style/BackButton"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/back_button"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bi_arrow_left"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.card.MaterialCardView
+                <TextView
+                    android:id="@+id/diagnose_heading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/manrope_extrabold"
+                    android:text="@string/diagnose"
+                    android:textSize="38sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/back_button" />
+
+                <TextView
+                    android:id="@+id/diagnose_subheading"
+                    style="@style/TextSubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/diagnose_subheading"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/diagnose_heading" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
                 android:id="@+id/camera_card"
-                android:layout_width="0dp"
-                android:layout_height="84dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="?attr/card_tonal_background"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/diagnose_subheading"
-                app:strokeWidth="0dp">
+                android:orientation="horizontal"
+                android:paddingVertical="29dp"
+                tools:ignore="UseCompoundDrawables">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:contentDescription="@string/camera"
+                    android:src="@drawable/round_photo_camera_24"
+                    app:tint="?attr/item_foreground" />
 
-                    <ImageView
-                        android:id="@+id/camera_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        android:contentDescription="@string/camera"
-                        android:src="@drawable/round_photo_camera_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/card_tonal_foreground" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/camera"
+                    android:textColor="?attr/item_foreground"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/camera_text"
-                        style="@style/TextSubHeading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/manrope_extrabold"
-                        android:gravity="center"
-                        android:text="@string/camera"
-                        android:textColor="?attr/card_tonal_foreground"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/camera_icon"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:id="@+id/gallery_card"
-                android:layout_width="0dp"
-                android:layout_height="84dp"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="?attr/card_tonal_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/camera_card"
-                app:strokeWidth="0dp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="29dp"
+                tools:ignore="UseCompoundDrawables">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:contentDescription="@string/gallery"
+                    android:src="@drawable/round_photo_library_24"
+                    app:tint="?attr/item_foreground"
+                    tools:ignore="UseAppTint" />
 
-                    <ImageView
-                        android:id="@+id/gallery_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        android:contentDescription="@string/camera"
-                        android:src="@drawable/round_photo_library_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/card_tonal_foreground" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/gallery"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/gallery_text"
-                        style="@style/TextSubHeading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/manrope_extrabold"
-                        android:gravity="center"
-                        android:text="@string/gallery"
-                        android:textColor="?attr/card_tonal_foreground"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/gallery_icon"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:id="@+id/preview_container"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingHorizontal="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/gallery_card">
@@ -182,7 +154,7 @@
                     android:contentDescription="@string/preview_image_view"
                     tools:src="@tools:sample/avatars" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 
     <Button
