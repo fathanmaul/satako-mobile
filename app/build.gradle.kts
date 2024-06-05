@@ -60,11 +60,14 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
     //datastore
     implementation(libs.androidx.datastore.preferences)
+
 
     //testing
     testImplementation(libs.junit)

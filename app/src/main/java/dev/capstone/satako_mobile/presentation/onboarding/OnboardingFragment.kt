@@ -1,10 +1,10 @@
 package dev.capstone.satako_mobile.presentation.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentOnboardingBinding
@@ -22,6 +22,7 @@ class OnboardingFragment : Fragment() {
         _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
