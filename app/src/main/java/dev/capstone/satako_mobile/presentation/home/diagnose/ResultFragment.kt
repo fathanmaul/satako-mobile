@@ -1,5 +1,7 @@
 package dev.capstone.satako_mobile.presentation.home.diagnose
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,10 +28,32 @@ class ResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        animateResult()
+
         with(binding) {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
+        }
+    }
+
+    private fun animateResult() {
+        val diseaseTextView =
+            ObjectAnimator.ofFloat(binding.diseaseNameTextView, View.ALPHA, 1f).setDuration(700)
+        val dateTextContainer =
+            ObjectAnimator.ofFloat(binding.dateTextContainer, View.ALPHA, 1f).setDuration(500)
+        val descriptionContainer =
+            ObjectAnimator.ofFloat(binding.descriptionContainer, View.ALPHA, 1f).setDuration(500)
+        val solutionContainer =
+            ObjectAnimator.ofFloat(binding.solutionContainer, View.ALPHA, 1f).setDuration(500)
+        AnimatorSet().apply {
+            playSequentially(
+                diseaseTextView,
+                dateTextContainer,
+                descriptionContainer,
+                solutionContainer
+            )
+            start()
         }
     }
 
