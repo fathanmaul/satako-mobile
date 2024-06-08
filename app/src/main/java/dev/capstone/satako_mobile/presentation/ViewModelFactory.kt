@@ -1,10 +1,10 @@
-package dev.capstone.satako_mobile.viewmodel
+package dev.capstone.satako_mobile.presentation
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dev.capstone.satako_mobile.di.Injection
-import dev.capstone.satako_mobile.viewmodel.register.RegisterViewModel
+import dev.capstone.satako_mobile.presentation.register.RegisterViewModel
 
 class ViewModelFactory(
     private val context: Context
