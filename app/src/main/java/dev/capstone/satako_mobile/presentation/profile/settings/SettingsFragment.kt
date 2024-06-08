@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentSettingsBinding
+import dev.capstone.satako_mobile.utils.sumCacheSize
 
 class SettingsFragment : Fragment() {
 
@@ -26,10 +28,22 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showSizeCache()
         with(binding) {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
+            btnClearCache.setOnClickListener {
+
+            }
+        }
+    }
+
+    private fun showSizeCache() {
+        var cacheSize = sumCacheSize(requireContext())
+        cacheSize /= 1024
+        if (cacheSize != 0L) {
+            binding.cacheSize.text = cacheSize.toString()
         }
     }
 

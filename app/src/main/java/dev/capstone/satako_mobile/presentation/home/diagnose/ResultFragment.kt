@@ -2,11 +2,13 @@ package dev.capstone.satako_mobile.presentation.home.diagnose
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentResultBinding
@@ -29,7 +31,8 @@ class ResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         animateResult()
-
+        val imageUri = ResultFragmentArgs.fromBundle(arguments as Bundle).imageUri
+        showPreview(imageUri?.toUri())
         with(binding) {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
@@ -55,6 +58,10 @@ class ResultFragment : Fragment() {
             )
             start()
         }
+    }
+
+    private fun showPreview(imageUri: Uri?) {
+        binding.resultImageView.setImageURI(imageUri)
     }
 
 }

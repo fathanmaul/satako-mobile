@@ -113,7 +113,12 @@
         android:id="@+id/resultFragment"
         android:name="dev.capstone.satako_mobile.presentation.home.diagnose.ResultFragment"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="image_uri"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/profile_fragment"
         android:name="dev.capstone.satako_mobile.presentation.profile.ProfileFragment"

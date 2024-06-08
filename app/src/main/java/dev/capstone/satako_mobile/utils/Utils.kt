@@ -32,14 +32,14 @@ fun uriToFile(imageUri: Uri, context: Context): File {
 }
 
 fun createCustomTempFile(context: Context): File {
-    val filesDir = context.externalCacheDir
-    return File.createTempFile(timeStamp, ".jpg", filesDir)
+    val filesDir = context.externalCacheDir 
+    return File.createTempFile("Utils_$timeStamp", ".jpg", filesDir)
 }
 
 fun File.reduceFileImage(): File {
     val file = this
     val bitmap = BitmapFactory.decodeFile(file.path).getRotatedBitmap(file)
-    var compressQuality = 100
+    var compressQuality = 50
     var streamLength: Int
     do {
         val bmpStream = ByteArrayOutputStream()
@@ -71,4 +71,29 @@ fun rotateImage(source: Bitmap, angle: Float): Bitmap {
     return Bitmap.createBitmap(
         source, 0, 0, source.width, source.height, matrix, true
     )
+}
+
+fun sumCacheSize(context: Context): Long {
+    val cacheDir = context.externalCacheDir ?: return 0
+    return getDirectorySize(cacheDir)
+}
+
+
+private fun getDirectorySize(directory: File): Long {
+    var size: Long = 0
+    if (directory.isDirectory) {
+        val files = directory.listFiles()
+        if (files != null) {
+            for (file in files) {
+                size += if (file.isDirectory) {
+                    getDirectorySize(file)
+                } else {
+                    file.length()
+                }
+            }
+        }
+    } else {
+        size = directory.length()
+    }
+    return size
 }
