@@ -63,4 +63,5 @@
     </string>
     <string name="dash">-</string>
     <string name="kb">KB</string>
+    <string name="image_capture_button">Image Capture Button</string>
 </resources>

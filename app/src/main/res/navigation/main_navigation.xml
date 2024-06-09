@@ -111,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="dev.capstone.satako_mobile.presentation.home.diagnose.ResultFragment"
+        android:name="dev.capstone.satako_mobile.presentation.home.diagnose.result.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <argument

@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
+import android.util.Log
 import androidx.exifinterface.media.ExifInterface
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -32,7 +33,7 @@ fun uriToFile(imageUri: Uri, context: Context): File {
 }
 
 fun createCustomTempFile(context: Context): File {
-    val filesDir = context.externalCacheDir 
+    val filesDir = context.externalCacheDir
     return File.createTempFile("Utils_$timeStamp", ".jpg", filesDir)
 }
 
@@ -96,4 +97,11 @@ private fun getDirectorySize(directory: File): Long {
         size = directory.length()
     }
     return size
+}
+
+fun deleteFromUri(uri: Uri) {
+    val file = File(uri.path)
+    if (file.exists()) {
+        file.delete()
+    }
 }
