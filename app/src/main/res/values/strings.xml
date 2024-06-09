@@ -57,4 +57,11 @@
     <string name="please_fill_out_all_forms">Please fill out all forms</string>
     <string name="success_register">Your account has been registered!</string>
     <string name="register_error">Error when creating your account</string>
+    <string name="disease_name">Disease Name</string>
+    <string name="cache_size">
+        %1$s
+    </string>
+    <string name="dash">-</string>
+    <string name="kb">KB</string>
+    <string name="image_capture_button">Image Capture Button</string>
 </resources>

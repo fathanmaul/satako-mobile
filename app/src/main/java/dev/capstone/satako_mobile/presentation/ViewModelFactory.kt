@@ -19,7 +19,6 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(Injection.provideRepository(context)) as T
             }
-
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(Injection.provideRepository(context)) as T
             }
@@ -31,7 +30,6 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(Injection.provideRepository(context)) as T
             }
-
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
