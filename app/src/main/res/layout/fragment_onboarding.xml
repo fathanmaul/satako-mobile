@@ -33,7 +33,7 @@
     <ImageView
         android:id="@+id/soil_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/soil_image"
         android:src="@drawable/soil"
@@ -51,7 +51,7 @@
         android:text="@string/get_started"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/soil_image" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

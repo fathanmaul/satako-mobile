@@ -77,4 +77,15 @@ dependencies {
 
     //ucrop
     implementation(libs.ucrop)
+
+    //cameraX
+
+    val cameraxVersion = "1.4.0-beta01"
+    implementation ("androidx.camera:camera-core:${cameraxVersion}")
+    implementation ("androidx.camera:camera-camera2:${cameraxVersion}")
+    implementation ("androidx.camera:camera-lifecycle:${cameraxVersion}")
+    implementation ("androidx.camera:camera-video:${cameraxVersion}")
+
+    implementation ("androidx.camera:camera-view:${cameraxVersion}")
+    implementation ("androidx.camera:camera-extensions:${cameraxVersion}")
 }

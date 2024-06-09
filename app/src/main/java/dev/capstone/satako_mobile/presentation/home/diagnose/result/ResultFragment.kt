@@ -1,4 +1,4 @@
-package dev.capstone.satako_mobile.presentation.home.diagnose
+package dev.capstone.satako_mobile.presentation.home.diagnose.result
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.navigation.findNavController
-import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment() {

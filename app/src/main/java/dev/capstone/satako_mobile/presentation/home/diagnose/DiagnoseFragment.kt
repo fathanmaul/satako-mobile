@@ -1,9 +1,10 @@
 package dev.capstone.satako_mobile.presentation.home.diagnose
 
 import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,23 +12,24 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.yalantis.ucrop.UCrop
-import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentDiagnoseBinding
+import dev.capstone.satako_mobile.presentation.home.diagnose.camera.CameraActivity
 import dev.capstone.satako_mobile.utils.createCustomTempFile
+import dev.capstone.satako_mobile.utils.deleteFromUri
 import dev.capstone.satako_mobile.utils.gone
-import dev.capstone.satako_mobile.utils.reduceFileImage
 import dev.capstone.satako_mobile.utils.show
-import dev.capstone.satako_mobile.utils.uriToFile
 import java.io.File
 
 class DiagnoseFragment : Fragment() {
 
 
-    private var currentImageUri: Uri? = null
     private var isPickImage: Boolean = false
+    private var currentImageUri: Uri? = null
+    private var cameraImageUri: Uri? = null
     private var tempCropFile: File? = null
     private val binding: FragmentDiagnoseBinding by lazy {
         FragmentDiagnoseBinding.inflate(layoutInflater)
@@ -38,7 +40,7 @@ class DiagnoseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -58,7 +60,13 @@ class DiagnoseFragment : Fragment() {
                     startGallery()
                 }
             }
+            cameraCard.setOnClickListener {
+                val intent = Intent(requireActivity(), CameraActivity::class.java)
+                launcherIntentCameraX.launch(intent)
+            }
         }
+
+        showPreview(null, false)
 
         viewModel.imageUri.observe(viewLifecycleOwner) {
             currentImageUri = it
@@ -66,6 +74,15 @@ class DiagnoseFragment : Fragment() {
         }
     }
 
+
+    private val launcherIntentCameraX = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == CameraActivity.CAMERAX_RESULT) {
+            cameraImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
+            launchUCrop(cameraImageUri!!)
+        }
+    }
     private val launchGallery =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             if (uri != null) {
@@ -83,18 +100,22 @@ class DiagnoseFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val resultUri = UCrop.getOutput(result.data!!)
-                resultUri?.let {
-                    viewModel.setImageUri(it)
+                resultUri?.let { uri ->
+                    viewModel.setImageUri(uri)
+                    Log.e("DiagnoseFragment", "uCropLauncher: $cameraImageUri")
+                    cameraImageUri?.let { deleteFromUri(it) }
                     showPreview(currentImageUri)
                 }
             } else {
+                if (cameraImageUri != null) {
+                    deleteFromUri(cameraImageUri!!)
+                }
                 tempCropFile?.delete()
                 isPickImage = false
             }
         }
 
     private fun launchUCrop(sourceUri: Uri) {
-//        val destinationUri = Uri.fromFile(createCustomTempFile(requireContext()))
         tempCropFile = createCustomTempFile(requireContext())
         val destinationUri = Uri.fromFile(tempCropFile)
         val uCrop = UCrop.of(sourceUri, destinationUri)
@@ -120,8 +141,8 @@ class DiagnoseFragment : Fragment() {
     }
 
 
-    private fun showPreview(uri: Uri?) {
-        if (uri != null) {
+    private fun showPreview(uri: Uri?, isShow: Boolean = true) {
+        if (uri != null && isShow) {
             binding.previewImageView.setImageURI(uri)
             binding.previewImageView.show()
             binding.previewTextView.show()
