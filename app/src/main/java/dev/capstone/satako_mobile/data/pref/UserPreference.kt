@@ -16,16 +16,12 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     suspend fun saveSession(token: String) {
         dataStore.edit { preferences ->
             preferences[TOKEN_KEY] = token
-//            preferences[USER_EMAIL] = email
-//            preferences[USER] = user
         }
     }
 
     fun getSession(): Flow<String> {
         return dataStore.data.map { preferences ->
             preferences[TOKEN_KEY] ?: ""
-//            preferences[USER_EMAIL] ?: ""
-//            preferences[USER] ?: ""
         }
     }
 
@@ -41,8 +37,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private var INSTANCE: UserPreference? = null
 
         private val TOKEN_KEY = stringPreferencesKey("token")
-        private val USER = stringPreferencesKey("user")
-        private val USER_EMAIL = stringPreferencesKey("email")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {
