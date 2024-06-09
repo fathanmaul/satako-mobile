@@ -1,21 +1,27 @@
 package dev.capstone.satako_mobile.presentation.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentProfileBinding
+import dev.capstone.satako_mobile.presentation.ViewModelFactory
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+
+    private val profileViewModel: ProfileViewModel by viewModels {
+        ViewModelFactory(requireContext())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,19 +49,17 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-    fun showLogoutDialog() {
+    private fun showLogoutDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Logout")
             .setMessage("Are you sure you want to logout?")
             .setPositiveButton("Yes") { dialog, which ->
-                findNavController().navigate(
-                    R.id.onboardingFragment,
-                    null,
-                    androidx.navigation.navOptions {
-                        popUpTo(R.id.main_navigation) {
-                            inclusive = true
-                        }
-                    })
+                profileViewModel.logout() {
+                    findNavController().navigate(
+                        R.id.action_profile_fragment_to_onboardingFragment, null,
+                        NavOptions.Builder().setPopUpTo(R.id.main_navigation, true).build()
+                    )
+                }
             }
             .setNegativeButton("No") { dialog, which ->
                 dialog.dismiss()

@@ -1,4 +1,4 @@
-package dev.capstone.satako_mobile.viewmodel.register
+package dev.capstone.satako_mobile.presentation.register
 
 import androidx.lifecycle.ViewModel
 import dev.capstone.satako_mobile.data.repository.DataRepository

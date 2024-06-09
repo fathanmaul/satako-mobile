@@ -7,11 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.R
+import dev.capstone.satako_mobile.presentation.ViewModelFactory
 
 class SplashFragment : Fragment() {
+
+    private val splashViewModel: SplashViewModel by viewModels {
+        ViewModelFactory(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,15 +26,17 @@ class SplashFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
-            // If user is logged in, navigate to HomeFragment
-            // view.findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-
-            // If user is not logged in, navigate to OnboardingFragment
-            view.findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+            splashViewModel.getSession().observe(viewLifecycleOwner) { session ->
+                if (session.isNotEmpty()) {
+                    view.findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                } else {
+                    view.findNavController()
+                        .navigate(R.id.action_splashFragment_to_onboardingFragment)
+                }
+            }
         }, 3000)
     }
 }
