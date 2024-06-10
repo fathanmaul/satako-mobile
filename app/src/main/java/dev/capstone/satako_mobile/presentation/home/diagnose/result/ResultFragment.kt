@@ -9,14 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.databinding.FragmentResultBinding
+import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseViewModel
 
 class ResultFragment : Fragment() {
 
     private val binding: FragmentResultBinding by lazy {
         FragmentResultBinding.inflate(layoutInflater)
     }
+
+    private val diagnoseViewModel: DiagnoseViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,11 +35,16 @@ class ResultFragment : Fragment() {
 
         animateResult()
         val imageUri = ResultFragmentArgs.fromBundle(arguments as Bundle).imageUri
-        showPreview(imageUri?.toUri())
         with(binding) {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
+        }
+        diagnoseViewModel.setImageUri(
+            imageUri?.let { Uri.parse(it) }
+        )
+        diagnoseViewModel.imageUri.observe(viewLifecycleOwner) {
+            showPreview(it)
         }
     }
 
