@@ -86,6 +86,16 @@
         <action
             android:id="@+id/action_home_fragment_to_profileFragment"
             app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_home_fragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
     </fragment>
     <fragment
         android:id="@+id/history_fragment"
@@ -113,7 +123,7 @@
         android:id="@+id/resultFragment"
         android:name="dev.capstone.satako_mobile.presentation.home.diagnose.result.ResultFragment"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" >
+        tools:layout="@layout/fragment_result">
         <argument
             android:name="image_uri"
             app:argType="string"
@@ -150,4 +160,26 @@
         android:name="dev.capstone.satako_mobile.presentation.profile.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="dev.capstone.satako_mobile.presentation.articles.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article">
+        <action
+            android:id="@+id/action_articleFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailArticleFragment"
+        android:name="dev.capstone.satako_mobile.presentation.articles.detail.DetailArticleFragment"
+        android:label="fragment_detail_article"
+        tools:layout="@layout/fragment_detail_article">
+        <argument
+            android:name="article_item"
+            app:argType="dev.capstone.satako_mobile.data.model.dummy.Article" />
+    </fragment>
 </navigation>
