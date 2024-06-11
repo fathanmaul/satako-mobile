@@ -9,9 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 
@@ -20,8 +17,6 @@ class SplashFragment : Fragment() {
     private val splashViewModel: SplashViewModel by viewModels {
         ViewModelFactory(requireContext())
     }
-
-    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreateView(
@@ -36,9 +31,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
             splashViewModel.getSession().observe(viewLifecycleOwner) { session ->
-                auth = Firebase.auth
-                val currentUser = auth.currentUser
-                if (session.isNotEmpty() && currentUser != null) {
+                if (session.isNotEmpty()) {
                     view.findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                 } else {
                     view.findNavController()
