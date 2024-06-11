@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id ("androidx.navigation.safeargs")
+    id("com.google.gms.google-services")
     id("kotlin-parcelize")
 }
 
@@ -77,7 +78,20 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //ucrop
-    implementation(libs.ucrop)
+    implementation (libs.ucrop)
+
+    // Import the Firebase BoM
+    implementation(platform(libs.firebase.bom))
+    // Add the dependency for the Firebase SDK for Google Analytics
+    implementation(libs.google.firebase.analytics)
+    // Add the dependency for the Firebase Authentication library
+    implementation(libs.google.firebase.auth)
+    // Add the dependency for the Google Play services library
+    implementation(libs.play.services.auth)
+    // credential manager
+    implementation(libs.androidx.credentials.v122)
+    implementation(libs.androidx.credentials.play.services.auth.v122)
+    implementation (libs.googleid)
 
     //cameraX
 
