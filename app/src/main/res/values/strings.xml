@@ -74,5 +74,9 @@
     <string name="example_author_name">
         By %1$s
     </string>
-    <string name="articles_subheading">Explore the newest updates here...</string>
+    <string name="articles_subheading">Explore the newest updates here…</string>
+    <string name="unexpected_type_of_credential">Unexpected type of credential</string>
+    <string name="failed_login">Failed to Login</string>
+    <string name="failed_to_get_credential">Failed to get credential</string>
+    <string name="invalid_googleid">Received an invalid google id token response</string>
 </resources>

@@ -1,7 +1,6 @@
 package dev.capstone.satako_mobile.presentation.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -106,32 +105,32 @@ class LoginFragment : Fragment() {
     }
 
     private fun signInWithGoogle() {
+        showLoading(true)
         val credentialManager =
-            CredentialManager.create(requireContext()) //import from androidx.CredentialManager
+            CredentialManager.create(requireContext())
         val googleIdOption = GetGoogleIdOption.Builder()
             .setFilterByAuthorizedAccounts(false)
             .setServerClientId(getString(R.string.your_web_client_id))
             .build()
-        val request = GetCredentialRequest.Builder() //import from androidx.CredentialManager
+        val request = GetCredentialRequest.Builder()
             .addCredentialOption(googleIdOption)
             .build()
-
         lifecycleScope.launch {
             try {
                 val result: GetCredentialResponse = credentialManager.getCredential(
-                    //import from androidx.CredentialManager
                     request = request,
                     context = requireActivity(),
                 )
                 handleSignIn(result)
-            } catch (e: GetCredentialException) { //import from androidx.CredentialManager
-                Log.d("Error", e.message.toString())
+            } catch (e: GetCredentialException) {
+                showLoading(false)
+                errorBottomSheet(getString(R.string.failed_to_get_credential))
             }
         }
     }
 
     private fun handleSignIn(result: GetCredentialResponse) {
-        // Handle the successfully returned credential.
+        showLoading(false)
         when (val credential = result.credential) {
             is CustomCredential -> {
                 if (credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
@@ -140,17 +139,15 @@ class LoginFragment : Fragment() {
                             GoogleIdTokenCredential.createFrom(credential.data)
                         firebaseAuthWithGoogle(googleIdTokenCredential.idToken)
                     } catch (e: GoogleIdTokenParsingException) {
-                        Log.e("Error", "Received an invalid google id token response", e)
+                        errorBottomSheet(getString(R.string.invalid_googleid))
                     }
                 } else {
-                    // Catch any unrecognized custom credential type here.
-                    Log.e("Error", "Unexpected type of credential")
+                    errorBottomSheet(getString(R.string.unexpected_type_of_credential))
                 }
             }
 
             else -> {
-                // Catch any unrecognized credential type here.
-                Log.e("Error", "Unexpected type of credential")
+                errorBottomSheet(getString(R.string.unexpected_type_of_credential))
             }
         }
     }
@@ -160,11 +157,10 @@ class LoginFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    Log.d("Error", "signInWithCredential:success")
                     val user: FirebaseUser? = auth.currentUser
                     updateUI(user)
                 } else {
-                    Log.w("Error", "signInWithCredential:failure", task.exception)
+                    errorBottomSheet(getString(R.string.failed_login))
                     updateUI(null)
                 }
             }
@@ -195,6 +191,16 @@ class LoginFragment : Fragment() {
         view.findNavController().navigate(
             R.id.action_loginFragment_to_homeFragment, null,
             NavOptions.Builder().setPopUpTo(R.id.main_navigation, true).build()
+        )
+    }
+
+    private fun errorBottomSheet(msg: String) {
+        showBottomSheetDialog(
+            requireContext(),
+            msg,
+            R.drawable.error_image,
+            buttonColorResId = R.color.danger,
+            onClick = {}
         )
     }
 }

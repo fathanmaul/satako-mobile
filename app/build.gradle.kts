@@ -91,7 +91,7 @@ dependencies {
     // credential manager
     implementation(libs.androidx.credentials.v122)
     implementation(libs.androidx.credentials.play.services.auth.v122)
-    implementation (libs.googleid)
+    implementation (libs.google.googleid)
 
     //cameraX
 
