@@ -21,7 +21,9 @@ import dev.capstone.satako_mobile.presentation.home.diagnose.camera.CameraActivi
 import dev.capstone.satako_mobile.utils.createCustomTempFile
 import dev.capstone.satako_mobile.utils.deleteFromUri
 import dev.capstone.satako_mobile.utils.gone
+import dev.capstone.satako_mobile.utils.reduceFileImage
 import dev.capstone.satako_mobile.utils.show
+import dev.capstone.satako_mobile.utils.uriToFile
 import java.io.File
 
 class DiagnoseFragment : Fragment() {
@@ -74,6 +76,11 @@ class DiagnoseFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        currentImageUri?.let { deleteFromUri(it) }
+    }
+
 
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -85,11 +92,7 @@ class DiagnoseFragment : Fragment() {
     }
     private val launchGallery =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
-            if (uri != null) {
-                launchUCrop(uri)
-            } else {
-                isPickImage = false
-            }
+            uri?.let { launchUCrop(it) } ?: run { isPickImage = false }
         }
 
     private fun startGallery() {
@@ -101,15 +104,10 @@ class DiagnoseFragment : Fragment() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val resultUri = UCrop.getOutput(result.data!!)
                 resultUri?.let { uri ->
-                    viewModel.setImageUri(uri)
-                    Log.e("DiagnoseFragment", "uCropLauncher: $cameraImageUri")
-                    cameraImageUri?.let { deleteFromUri(it) }
-                    showPreview(currentImageUri)
+                    handleImageUri(uri)
                 }
             } else {
-                if (cameraImageUri != null) {
-                    deleteFromUri(cameraImageUri!!)
-                }
+                cameraImageUri?.let { deleteFromUri(it) }
                 tempCropFile?.delete()
                 isPickImage = false
             }
@@ -120,7 +118,6 @@ class DiagnoseFragment : Fragment() {
         val destinationUri = Uri.fromFile(tempCropFile)
         val uCrop = UCrop.of(sourceUri, destinationUri)
             .withAspectRatio(1f, 1f)
-            .withMaxResultSize(240, 240)
         uCrop.getIntent(requireContext()).let {
             uCropLauncher.launch(it)
         }
@@ -138,6 +135,15 @@ class DiagnoseFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun handleImageUri(uri: Uri) {
+        currentImageUri?.let { deleteFromUri(it) }
+        val imageCompress = uriToFile(uri, requireContext()).reduceFileImage()
+        viewModel.setImageUri(imageCompress.toUri())
+        tempCropFile?.let { deleteFromUri(it.toUri()) }
+        cameraImageUri?.let { deleteFromUri(it) }
+        isPickImage = false
     }
 
 

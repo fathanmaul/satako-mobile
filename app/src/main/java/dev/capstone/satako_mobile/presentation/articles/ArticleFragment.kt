@@ -1,4 +1,4 @@
-package dev.capstone.satako_mobile.presentation.home
+package dev.capstone.satako_mobile.presentation.articles
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,17 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.model.dummy.Article
-import dev.capstone.satako_mobile.databinding.FragmentHomeBinding
-import dev.capstone.satako_mobile.presentation.articles.ArticlesAdapter
-import dev.capstone.satako_mobile.presentation.articles.OnArticleClickListener
+import dev.capstone.satako_mobile.databinding.FragmentArticleBinding
 
-class HomeFragment : Fragment(), OnArticleClickListener {
+class ArticleFragment : Fragment(), OnArticleClickListener {
 
-//    private var _binding: FragmentHomeBinding? = null
-//    private val binding get() = _binding!!
-
-    private val binding: FragmentHomeBinding by lazy {
-        FragmentHomeBinding.inflate(layoutInflater)
+    private val binding: FragmentArticleBinding by lazy {
+        FragmentArticleBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -34,31 +29,28 @@ class HomeFragment : Fragment(), OnArticleClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            diagnoseButton.setOnClickListener {
-                view.findNavController().navigate(R.id.action_home_fragment_to_diagnoseFragment)
-            }
-            txtSeeAll.setOnClickListener {
-                view.findNavController().navigate(R.id.action_home_fragment_to_articleFragment)
+            backButton.setOnClickListener {
+                view.findNavController().popBackStack()
             }
         }
+
         setupRecyclerView()
     }
-
 
     private fun setupRecyclerView() {
         val articles = generateDummyArticles()
         val adapter = ArticlesAdapter(articles, this)
 
         with(binding) {
-            rvArticles.layoutManager = LinearLayoutManager(requireContext())
-            rvArticles.adapter = adapter
+            articlesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            articlesRecyclerView.adapter = adapter
         }
 
     }
 
     private fun generateDummyArticles(): List<Article> {
         val dummyList = mutableListOf<Article>()
-        for (i in 0..4) {
+        for (i in 0..15) {
             dummyList.add(
                 Article(
                     "Title $i",
@@ -71,20 +63,9 @@ class HomeFragment : Fragment(), OnArticleClickListener {
         return dummyList
     }
 
-    override fun onResume() {
-        super.onResume()
-//        requireActivity().onBackPressedDispatcher.addCallback(
-//            this,
-//            object : OnBackPressedCallback(true) {
-//                override fun handleOnBackPressed() {
-//                    requireActivity().finish()
-//                }
-//            }
-//        )
-    }
-
     override fun onArticleClick(article: Article) {
-        val action = HomeFragmentDirections.actionHomeFragmentToDetailArticleFragment(article)
+        val action = ArticleFragmentDirections.actionArticleFragmentToDetailArticleFragment(article)
         findNavController().navigate(action)
     }
+
 }
