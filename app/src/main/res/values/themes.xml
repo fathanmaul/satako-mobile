@@ -6,7 +6,12 @@
         <item name="colorSurface">@color/white</item>
         <item name="colorSurfaceContainer">@color/green_50</item>
         <item name="colorSecondaryContainer">@color/green_200</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@color/background</item>
+
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+        <item name="android:windowLightStatusBar">true</item>
 
         <item name="edit_text_background">@color/edit_text_background</item>
         <item name="item_foreground">@color/neutral_600</item>
@@ -15,8 +20,9 @@
         <item name="header_container_background">@color/green_500</item>
         <item name="sheet_container_background">@color/white</item>
         <item name="android:textViewStyle">@style/ManropeTextViewStyle</item>
-    </style>
 
+        <item name="background_card_item">@color/white</item>
+    </style>
 
     <style name="BackButton" parent="Widget.AppCompat.ImageButton">
         <item name="tint">@color/green_500</item>

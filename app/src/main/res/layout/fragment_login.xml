@@ -147,14 +147,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <com.google.android.gms.common.SignInButton
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/google_sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:isDarkTheme="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/or_tv" />
+    
 
     <ProgressBar
         android:id="@+id/pb_login"

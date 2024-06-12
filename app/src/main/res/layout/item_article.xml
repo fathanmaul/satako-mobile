@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    android:id="@+id/article_card"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/article_card"
     android:layout_width="match_parent"
     android:layout_height="121dp"
     android:layout_marginHorizontal="24dp"
-    app:cardCornerRadius="10dp"
     android:layout_marginBottom="12dp"
-    app:strokeWidth="1dp">
+    app:cardBackgroundColor="?attr/background_card_item"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,8 +20,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/article_image"
             android:layout_width="92dp"
-            app:cardCornerRadius="10dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp">
+
             <ImageView
                 android:id="@+id/article_image_view"
                 android:layout_width="92dp"
@@ -65,4 +67,4 @@
     </RelativeLayout>
 
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
