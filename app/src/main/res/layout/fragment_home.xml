@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="24dp"
-            android:paddingTop="56dp">
+            android:paddingTop="50dp">
 
 
             <TextView
@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/manrope_extrabold"
-                android:text="Welcome,"
+                android:text="@string/hello"
                 android:textSize="39sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/manrope_medium"
-                android:text="We help you find solution\nto your plant problem"
+                android:text="@string/we_help_you_find_solution_nto_your_plant_problem"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

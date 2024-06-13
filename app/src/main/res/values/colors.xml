@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
+
     <color name="green_50">#FFF0FDF4</color>
     <color name="green_100">#FFDCFCE7</color>
     <color name="green_200">#FFBBF7D0</color>
@@ -21,15 +23,21 @@
     <color name="neutral_800">#FF262626</color>
     <color name="neutral_900">#FF171717</color>
 
-    <color name="danger">#FFFF4747</color>
 
 
-    <color name="edit_text_background">#FFF4F4F4</color>
+
+    <color name="edit_text_background">#EDEDED</color>
     <color name="edit_text_background_dark">#FF3A3A3A</color>
 
 
     <!--   Color Scheme -->
     <color name="primary">@color/green_500</color>
+    <color name="background">#F8F8F8</color>
+
     <color name="primary_dark">@color/green_400</color>
     <color name="surface_dark">#FF4B4B4B</color>
+    <color name="background_dark">#1E1E1E</color>
+    <color name="card_dark">#2F2F2F</color>
+
+    <color name="danger">#FFFF4747</color>
 </resources>

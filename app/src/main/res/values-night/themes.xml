@@ -9,7 +9,7 @@
         <item name="colorOnSurfaceVariant">@color/white</item>
         <item name="colorOnSurface">@color/white</item>
         <item name="colorSurface">@color/surface_dark</item>
-        <item name="android:windowBackground">@color/neutral_900</item>
+        <item name="android:windowBackground">@color/background_dark</item>
 
         <item name="edit_text_background">@color/edit_text_background_dark</item>
         <item name="item_foreground">@color/white</item>
@@ -17,6 +17,14 @@
         <item name="card_tonal_foreground">@color/white</item>
         <item name="header_container_background">@color/green_800</item>
         <item name="sheet_container_background">@color/neutral_800</item>
+
+        <item name="android:statusBarColor">
+            @color/background_dark
+        </item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="background_card_item">@color/card_dark</item>
+
     </style>
 
     <style name="Base.Widget.AppCompat.TextView" parent="Base.Theme.Satakomobile">
@@ -44,5 +52,15 @@
         <item name="android:textColor">@color/green_900</item>
     </style>
 
+    <style name="DangerButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">15dp</item>
+        <item name="backgroundTint">@color/danger</item>
+        <item name="android:drawableTint">
+            @color/white
+        </item>
+        <item name="fontFamily">
+            @font/manrope_semibold
+        </item>
+    </style>
 
 </resources>

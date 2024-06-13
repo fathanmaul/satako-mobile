@@ -79,4 +79,8 @@
     <string name="failed_login">Failed to Login</string>
     <string name="failed_to_get_credential">Failed to get credential</string>
     <string name="invalid_googleid">Received an invalid google id token response</string>
+    <string name="welcome">Welcome</string>
+    <string name="we_help_you_find_solution_nto_your_plant_problem">We help you find solution\nto your plant problem</string>
+    <string name="hello">Hello,</string>
+    <string name="or">Or</string>
 </resources>

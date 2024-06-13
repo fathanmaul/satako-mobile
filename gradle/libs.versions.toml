@@ -1,8 +1,10 @@
 [versions]
 agp = "8.3.2"
+cameraxVersion = "1.4.0-beta01"
 credentials = "1.5.0-alpha01"
 credentialsPlayServicesAuth = "1.2.2"
 credentialsVersion = "1.2.2"
+customGoogleSigninButton = "2.0.0"
 firebaseBom = "33.1.0"
 flexbox = "3.0.0"
 glide = "4.16.0"
@@ -27,6 +29,12 @@ navigationUiKtx = "2.7.7"
 ucrop = "2.2.8"
 
 [libraries]
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraxVersion" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraxVersion" }
+androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "cameraxVersion" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraxVersion" }
+androidx-camera-video = { module = "androidx.camera:camera-video", version.ref = "cameraxVersion" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraxVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-credentials-play-services-auth-v122 = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
 androidx-credentials-v122 = { module = "androidx.credentials:credentials", version.ref = "credentialsVersion" }
@@ -34,6 +42,7 @@ androidx-datastore-preferences = { module = "androidx.datastore:datastore-prefer
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+custom-google-signin-button = { module = "com.github.shobhitpuri:custom-google-signin-button", version.ref = "customGoogleSigninButton" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
