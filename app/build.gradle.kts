@@ -104,4 +104,7 @@ dependencies {
 
     // Custom Button Sign In
     implementation (libs.custom.google.signin.button)
+
+    // Splash API
+    implementation (libs.androidx.core.splashscreen)
 }

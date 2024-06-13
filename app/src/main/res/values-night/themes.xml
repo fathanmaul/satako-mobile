@@ -24,6 +24,7 @@
         <item name="android:windowLightStatusBar">false</item>
 
         <item name="background_card_item">@color/card_dark</item>
+        <item name="splash_icon_color">@color/white</item>
 
     </style>
 

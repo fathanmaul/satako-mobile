@@ -20,8 +20,8 @@
         <item name="header_container_background">@color/green_500</item>
         <item name="sheet_container_background">@color/white</item>
         <item name="android:textViewStyle">@style/ManropeTextViewStyle</item>
-
         <item name="background_card_item">@color/white</item>
+        <item name="splash_icon_color">@color/primary</item>
     </style>
 
     <style name="BackButton" parent="Widget.AppCompat.ImageButton">

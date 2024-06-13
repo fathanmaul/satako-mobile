@@ -71,18 +71,6 @@ class HomeFragment : Fragment(), OnArticleClickListener {
         return dummyList
     }
 
-    override fun onResume() {
-        super.onResume()
-//        requireActivity().onBackPressedDispatcher.addCallback(
-//            this,
-//            object : OnBackPressedCallback(true) {
-//                override fun handleOnBackPressed() {
-//                    requireActivity().finish()
-//                }
-//            }
-//        )
-    }
-
     override fun onArticleClick(article: Article) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailArticleFragment(article)
         findNavController().navigate(action)

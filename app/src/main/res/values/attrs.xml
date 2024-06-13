@@ -8,5 +8,7 @@
     <attr name="header_container_background" format="color" />
     <attr name="header_container_foreground" format="color" />
     <attr name="sheet_container_background" format="color" />
-    <attr name="background_card_item" format="color"/>
+    <attr name="background_card_item" format="color" />
+    <attr name="splash_icon_color" format="color" />
+    <attr name="splash_background_color" format="color" />
 </resources>
