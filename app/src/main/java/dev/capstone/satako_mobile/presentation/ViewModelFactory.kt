@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import dev.capstone.satako_mobile.di.Injection
 import dev.capstone.satako_mobile.presentation.login.LoginViewModel
 import dev.capstone.satako_mobile.presentation.profile.ProfileViewModel
-import dev.capstone.satako_mobile.presentation.profile.settings.SettingsViewModel
 import dev.capstone.satako_mobile.presentation.register.RegisterViewModel
 import dev.capstone.satako_mobile.presentation.splash.SplashViewModel
 

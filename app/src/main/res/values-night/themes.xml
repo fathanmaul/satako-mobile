@@ -8,7 +8,6 @@
         <item name="colorOnSecondaryContainer">@color/white</item>
         <item name="colorOnSurfaceVariant">@color/white</item>
         <item name="colorOnSurface">@color/white</item>
-        <item name="colorSurfaceContainerHigh">@color/green_50</item>
         <item name="colorSurface">@color/surface_dark</item>
         <item name="android:windowBackground">@color/background_dark</item>
 
@@ -26,8 +25,6 @@
 
         <item name="background_card_item">@color/card_dark</item>
         <item name="splash_icon_color">@color/white</item>
-
-        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
 
     </style>
 
@@ -65,21 +62,6 @@
         <item name="fontFamily">
             @font/manrope_semibold
         </item>
-    </style>
-
-    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="colorOnPrimary">
-            @color/white
-        </item>
-        <item name="android:background">@color/neutral_700</item>
-        <item name="colorSurfaceContainerHigh">@color/green_50</item>
-        <item name="colorOnSurface">@color/neutral_900</item>
-        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text
-        </item>
-    </style>
-
-    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
-        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>
