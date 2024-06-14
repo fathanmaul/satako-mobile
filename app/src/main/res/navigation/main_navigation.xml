@@ -163,5 +163,18 @@
         android:id="@+id/placeholderFragment2"
         android:name="dev.capstone.satako_mobile.presentation.splash.PlaceholderFragment"
         android:label="fragment_placeholder"
-        tools:layout="@layout/fragment_placeholder" />
+        tools:layout="@layout/fragment_placeholder" >
+        <action
+            android:id="@+id/action_placeholderFragment2_to_home_fragment"
+            app:destination="@id/home_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/placeholderFragment2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_placeholderFragment2_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/placeholderFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

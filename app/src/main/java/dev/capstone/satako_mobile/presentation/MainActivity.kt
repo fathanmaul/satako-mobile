@@ -3,6 +3,7 @@ package dev.capstone.satako_mobile.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -27,9 +28,7 @@ import dev.capstone.satako_mobile.utils.show
 
 class MainActivity : AppCompatActivity() {
 
-    private val splashViewModel: SplashViewModel by viewModels {
-        ViewModelFactory(this)
-    }
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,16 +36,6 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController = navHostFragment.navController
-        val navGraph = navController.navInflater.inflate(R.navigation.main_navigation)
-        splashViewModel.getSession().observe(this) { session ->
-            navGraph.setStartDestination(
-                if (session.isNotEmpty()) R.id.home_fragment else R.id.onboardingFragment
-            )
-            navController.graph = navGraph
-        }
         navigationBar()
     }
 
