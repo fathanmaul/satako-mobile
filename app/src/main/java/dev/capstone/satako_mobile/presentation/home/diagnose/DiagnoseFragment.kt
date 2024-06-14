@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
@@ -51,6 +52,7 @@ class DiagnoseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             backButton.setOnClickListener {
+                currentImageUri?.let { deleteFromUri(it) }
                 view.findNavController().popBackStack()
             }
             buttonDiagnose.setOnClickListener { view ->
@@ -68,17 +70,19 @@ class DiagnoseFragment : Fragment() {
             }
         }
 
-        showPreview(null, false)
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    currentImageUri?.let { deleteFromUri(it) }
+                    view.findNavController().popBackStack()
+                }
+            })
 
         viewModel.imageUri.observe(viewLifecycleOwner) {
             currentImageUri = it
             showPreview(currentImageUri)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        currentImageUri?.let { deleteFromUri(it) }
     }
 
 
