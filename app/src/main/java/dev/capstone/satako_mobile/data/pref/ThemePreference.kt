@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import dev.capstone.satako_mobile.utils.Const
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -15,18 +14,20 @@ val Context.dataStoreTheme: DataStore<Preferences> by preferencesDataStore(name 
 
 class ThemePreference private constructor(private val dataStoreTheme: DataStore<Preferences>) {
 
-    fun getThemePref(): Flow<String> {
+
+    fun getTheme(): Flow<Int?> {
         return dataStoreTheme.data.map { preferences ->
-            preferences[THEME_KEY] ?: Const.Theme.SYSTEM.value
+            preferences[THEME_KEY] // If THEME_KEY is not present, this will be null
         }
     }
 
-
-    suspend fun saveThemePref(
-        theme: Const.Theme
-    ) {
+    suspend fun saveTheme(isDarkMode: Int?) {
         dataStoreTheme.edit { preferences ->
-            preferences[THEME_KEY] = theme.value
+            if (isDarkMode != null) {
+                preferences[THEME_KEY] = isDarkMode
+            } else {
+                preferences.remove(THEME_KEY)
+            }
         }
     }
 
@@ -34,7 +35,7 @@ class ThemePreference private constructor(private val dataStoreTheme: DataStore<
         @Volatile
         private var INSTANCE: ThemePreference? = null
 
-        private val THEME_KEY = stringPreferencesKey("theme")
+        private val THEME_KEY = intPreferencesKey("theme")
 
         fun getInstance(dataStore: DataStore<Preferences>): ThemePreference {
             return INSTANCE ?: synchronized(this) {

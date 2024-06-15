@@ -75,4 +75,6 @@ class HomeFragment : Fragment(), OnArticleClickListener {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailArticleFragment(article)
         findNavController().navigate(action)
     }
+
+
 }
