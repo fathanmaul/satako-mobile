@@ -83,4 +83,8 @@
     <string name="we_help_you_find_solution_nto_your_plant_problem">We help you find solution\nto your plant problem</string>
     <string name="hello">Hello,</string>
     <string name="or">Or</string>
+    <string name="choose_theme">Choose Theme</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System Default</string>
 </resources>

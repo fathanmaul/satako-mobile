@@ -1,5 +1,6 @@
 package dev.capstone.satako_mobile.presentation
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +9,7 @@ import android.window.OnBackInvokedDispatcher
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -21,7 +23,11 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.capstone.satako_mobile.R
+import dev.capstone.satako_mobile.data.pref.ThemePreference
+import dev.capstone.satako_mobile.data.pref.dataStoreTheme
 import dev.capstone.satako_mobile.databinding.ActivityMainBinding
+import dev.capstone.satako_mobile.presentation.profile.settings.SettingsViewModel
+import dev.capstone.satako_mobile.presentation.profile.settings.SettingsViewModelFactory
 import dev.capstone.satako_mobile.presentation.splash.SplashViewModel
 import dev.capstone.satako_mobile.utils.gone
 import dev.capstone.satako_mobile.utils.show
@@ -31,11 +37,17 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
+    private val viewModel: SettingsViewModel by viewModels {
+        SettingsViewModelFactory(ThemePreference.getInstance(this.dataStoreTheme))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        changeTheme()
         navigationBar()
     }
 
@@ -101,6 +113,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+
         logCurrentFragment()
     }
 
@@ -113,6 +126,18 @@ class MainActivity : AppCompatActivity() {
         Log.i("MainActivity", "Back stack entry count: $backStackCount")
         fragmentList.forEach { fragment ->
             Log.i("MainActivity", "Fragment: ${fragment.javaClass.simpleName}")
+        }
+    }
+
+    private fun changeTheme() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            viewModel.getThemeLiveData().observe(this) {
+                when (it) {
+                    0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+            }
         }
     }
 
