@@ -3,11 +3,13 @@ package dev.capstone.satako_mobile.presentation.history
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.capstone.satako_mobile.data.response.HistoryItem
 import dev.capstone.satako_mobile.databinding.ItemHistoryBinding
+import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseFragmentDirections
 import dev.capstone.satako_mobile.utils.formatIsoDate
 
 
@@ -32,7 +34,13 @@ class HistoryAdapter() : ListAdapter<HistoryItem, HistoryAdapter.HistoryViewHold
         val history = getItem(position)
         holder.bind(history)
         holder.itemView.setOnClickListener {
-
+            val toResultFragment =
+                HistoryFragmentDirections.actionHistoryFragmentToResultFragment(
+                    null,
+                    null,
+                    history
+                )
+            holder.itemView.findNavController().navigate(toResultFragment)
         }
     }
 
