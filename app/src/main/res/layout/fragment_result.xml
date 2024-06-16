@@ -157,7 +157,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/solution_container"
+                android:id="@+id/causes_container"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:alpha="0"
@@ -166,6 +166,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description_container"
+                tools:alpha="100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/causes"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/causes_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/example_lorem" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/solution_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/causes_container"
                 tools:alpha="100">
 
                 <TextView

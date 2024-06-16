@@ -3,13 +3,13 @@ package dev.capstone.satako_mobile.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
-import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.data.pref.UserPreference
 import dev.capstone.satako_mobile.data.response.ErrorResponse
 import dev.capstone.satako_mobile.data.response.HistoryResponse
 import dev.capstone.satako_mobile.data.response.LoginResponse
 import dev.capstone.satako_mobile.data.response.PredictResponse
 import dev.capstone.satako_mobile.data.response.RegisterResponse
+import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.data.retrofit.ApiConfig
 import dev.capstone.satako_mobile.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -72,10 +72,7 @@ class DataRepository private constructor(
             val response = apiService.predict(file)
             emit(Result.Success(response))
         } catch (e: HttpException) {
-            val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-            val errorMessage = errorBody.message
-            errorMessage?.let { Result.Error(it) }?.let { emit(it) }
+            emit(Result.Error(e.message()))
         }
     }
 
@@ -87,10 +84,7 @@ class DataRepository private constructor(
             val response = apiService.getHistory()
             emit(Result.Success(response))
         } catch (e: HttpException) {
-            val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-            val errorMessage = errorBody.message
-            errorMessage?.let { Result.Error(it) }?.let { emit(it) }
+            emit(Result.Error(e.message()))
         }
 
     }
