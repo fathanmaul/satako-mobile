@@ -90,9 +90,9 @@ class LoginFragment : Fragment() {
                                 showLoading(false)
                                 val token = it.data.dataLogin?.token
                                 val username = it.data.dataLogin?.customUser?.username
-                                val email = it.data.dataLogin?.customUser?.email
+                                val emailUser = it.data.dataLogin?.customUser?.email
 
-                                if (token != null && username != null && email != null) {
+                                if (token != null && username != null && emailUser != null) {
                                     loginViewModel.saveTokenSession(token, username, email) {
                                         toHome(view)
                                     }

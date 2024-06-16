@@ -2,9 +2,7 @@ package dev.capstone.satako_mobile.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.google.gson.Gson
 import dev.capstone.satako_mobile.data.pref.UserPreference
-import dev.capstone.satako_mobile.data.response.ErrorResponse
 import dev.capstone.satako_mobile.data.response.HistoryResponse
 import dev.capstone.satako_mobile.data.response.LoginResponse
 import dev.capstone.satako_mobile.data.response.PredictResponse

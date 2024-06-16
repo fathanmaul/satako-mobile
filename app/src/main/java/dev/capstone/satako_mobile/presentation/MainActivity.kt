@@ -4,33 +4,20 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import android.window.OnBackInvokedDispatcher
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.pref.ThemePreference
 import dev.capstone.satako_mobile.data.pref.dataStoreTheme
 import dev.capstone.satako_mobile.databinding.ActivityMainBinding
 import dev.capstone.satako_mobile.presentation.profile.settings.SettingsViewModel
 import dev.capstone.satako_mobile.presentation.profile.settings.SettingsViewModelFactory
-import dev.capstone.satako_mobile.presentation.splash.SplashViewModel
-import dev.capstone.satako_mobile.utils.gone
-import dev.capstone.satako_mobile.utils.show
 
 class MainActivity : AppCompatActivity() {
 
