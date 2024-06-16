@@ -87,4 +87,6 @@
     <string name="light">Light</string>
     <string name="dark">Dark</string>
     <string name="system_default">System Default</string>
+    <string name="failed_to_get_history">Failed to Get History</string>
+    <string name="causes">Causes</string>
 </resources>
