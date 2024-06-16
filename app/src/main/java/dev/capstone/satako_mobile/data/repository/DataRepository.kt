@@ -22,12 +22,20 @@ class DataRepository private constructor(
     private val userPreference: UserPreference,
     private val apiService: ApiService
 ) {
-    suspend fun saveSession(token: String) {
-        userPreference.saveSession(token)
+    suspend fun saveSession(token: String, username: String, email: String) {
+        userPreference.saveSession(token, username, email)
     }
 
     fun getSession(): Flow<String> {
         return userPreference.getSession()
+    }
+
+    fun getUsername(): Flow<String> {
+        return userPreference.getUsername()
+    }
+
+    fun getEmail(): Flow<String> {
+        return userPreference.getEmail()
     }
 
     suspend fun logout() {

@@ -37,9 +37,22 @@ class ProfileFragment : Fragment() {
         auth = Firebase.auth
 
         with(binding) {
+            profileViewModel.getUsername().observe(viewLifecycleOwner) { username ->
+                if (username != null) {
+                    usernameTextView.text = username
+                }
+            }
+
+            profileViewModel.getEmail().observe(viewLifecycleOwner) { email ->
+                if (email != null) {
+                    emailTextView.text = email
+                }
+            }
+
             btnSettings.setOnClickListener {
                 view.findNavController().navigate(R.id.action_profile_fragment_to_settingsFragment)
             }
+
             btnLogout.setOnClickListener {
                 showLogoutDialog()
             }

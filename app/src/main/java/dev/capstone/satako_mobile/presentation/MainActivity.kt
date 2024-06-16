@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeTheme() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             viewModel.getThemeLiveData().observe(this) {
                 when (it) {
                     0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

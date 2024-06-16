@@ -89,8 +89,11 @@ class LoginFragment : Fragment() {
                             is Result.Success -> {
                                 showLoading(false)
                                 val token = it.data.dataLogin?.token
-                                if (token != null) {
-                                    loginViewModel.saveTokenSession(token) {
+                                val username = it.data.dataLogin?.customUser?.username
+                                val email = it.data.dataLogin?.customUser?.email
+
+                                if (token != null && username != null && email != null) {
+                                    loginViewModel.saveTokenSession(token, username, email) {
                                         toHome(view)
                                     }
                                 }
@@ -167,8 +170,13 @@ class LoginFragment : Fragment() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             val token = currentUser.getIdToken(true).toString()
-            loginViewModel.saveTokenSession(token) {
-                toHome(requireView())
+            val username = currentUser.displayName
+            val email = currentUser.email
+
+            if (username != null && email != null) {
+                loginViewModel.saveTokenSession(token, username, email) {
+                    toHome(requireView())
+                }
             }
         } else {
             errorBottomSheet(getString(R.string.login_failed))

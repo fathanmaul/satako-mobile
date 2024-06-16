@@ -10,9 +10,9 @@ class LoginViewModel(private val repository: DataRepository) : ViewModel() {
     fun login(email: String, password: String) = repository.login(email, password)
 
 
-    fun saveTokenSession(token: String, callback: () -> Unit) {
+    fun saveTokenSession(token: String, username: String, email: String, callback: () -> Unit) {
         viewModelScope.launch {
-            repository.saveSession(token)
+            repository.saveSession(token, username, email)
             callback()
         }
 
