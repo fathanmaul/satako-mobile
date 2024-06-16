@@ -89,4 +89,5 @@
     <string name="system_default">System Default</string>
     <string name="failed_to_get_history">Failed to Get History</string>
     <string name="causes">Causes</string>
+    <string name="failed_to_predict">Failed to Predict. Please Try Again</string>
 </resources>
