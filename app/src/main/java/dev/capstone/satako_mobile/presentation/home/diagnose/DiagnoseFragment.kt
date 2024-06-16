@@ -169,8 +169,9 @@ class DiagnoseFragment : Fragment() {
                              val toResultFragment =
                                  DiagnoseFragmentDirections.actionDiagnoseFragmentToResultFragment(
                                      currentImageUri.toString(),
-                                     it.data.dataPredict
-                                     )
+                                     it.data.dataPredict,
+                                     null
+                                 )
                              isPickImage = false
                              view.findNavController().navigate(toResultFragment)
                          }

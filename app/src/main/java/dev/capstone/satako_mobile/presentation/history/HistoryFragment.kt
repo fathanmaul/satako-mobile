@@ -70,7 +70,10 @@ class HistoryFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.pbHistory.visibility = if (isLoading) View.VISIBLE else View.GONE
+        with(binding) {
+            pbHistory.visibility = if (isLoading) View.VISIBLE else View.GONE
+            historyRecyclerView.visibility = if (isLoading) View.GONE else View.VISIBLE
+        }
     }
 
     private fun setHistory(history: List<HistoryItem?>?) {

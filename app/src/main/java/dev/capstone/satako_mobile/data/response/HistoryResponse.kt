@@ -1,6 +1,8 @@
 package dev.capstone.satako_mobile.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class HistoryResponse(
 
@@ -11,6 +13,8 @@ data class HistoryResponse(
 	val status: String? = null
 )
 
+
+@Parcelize
 data class HistoryItem(
 
 	@field:SerializedName("createdAt")
@@ -39,4 +43,4 @@ data class HistoryItem(
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
-)
+): Parcelable

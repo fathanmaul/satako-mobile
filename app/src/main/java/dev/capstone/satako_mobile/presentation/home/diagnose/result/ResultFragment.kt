@@ -14,6 +14,7 @@ import dev.capstone.satako_mobile.databinding.FragmentResultBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseViewModel
 import dev.capstone.satako_mobile.utils.date
+import dev.capstone.satako_mobile.utils.formatIsoDate
 
 class ResultFragment : Fragment() {
 
@@ -28,7 +29,7 @@ class ResultFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -39,16 +40,28 @@ class ResultFragment : Fragment() {
         animateResult()
         val imageUri = ResultFragmentArgs.fromBundle(arguments as Bundle).imageUri
         val predictResult = ResultFragmentArgs.fromBundle(arguments as Bundle).predictResult
+        val history = ResultFragmentArgs.fromBundle(arguments as Bundle).history
         with(binding) {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
 
-            diseaseNameTextView.text = predictResult.disease
-            dateTextView.text = date
-            descriptionText.text = predictResult.description
-            causesText.text = predictResult.causes
-            solutionText.text = predictResult.solutions
+            if (history != null) {
+                diseaseNameTextView.text = history.disease
+                dateTextView.text = history.createdAt?.let { formatIsoDate(it) }
+                descriptionText.text = history.description
+                causesText.text = history.causes
+                solutionText.text = history.solutions
+            } else {
+                if (predictResult != null) {
+                    diseaseNameTextView.text = predictResult.disease
+                    dateTextView.text = date
+                    descriptionText.text = predictResult.description
+                    causesText.text = predictResult.causes
+                    solutionText.text = predictResult.solutions
+                }
+            }
+
         }
         diagnoseViewModel.setImageUri(
             imageUri?.let { Uri.parse(it) }
