@@ -17,8 +17,10 @@ import java.util.Locale
 
 
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
+private const val DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
-private const val MAXIMAL_SIZE = 1000000
+val date: String = SimpleDateFormat(DATE_FORMAT, Locale.US).format(Date())
+private const val MAXIMAL_SIZE = 2000000
 
 fun uriToFile(imageUri: Uri, context: Context): File {
     val myFile = createCustomTempFile(context)
