@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.pref.ThemePreference
 import dev.capstone.satako_mobile.data.pref.dataStoreTheme
 import dev.capstone.satako_mobile.databinding.FragmentSettingsBinding
+import dev.capstone.satako_mobile.utils.deleteCache
 import dev.capstone.satako_mobile.utils.sumCacheSize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +49,14 @@ class SettingsFragment : Fragment() {
                 view.findNavController().popBackStack()
             }
             btnClearCache.setOnClickListener {
-
+                try {
+                    deleteCache(requireContext())
+                    Snackbar.make(view, getString(R.string.cache_cleared), Snackbar.LENGTH_SHORT)
+                        .show()
+                } catch (e: Exception) {
+                    Snackbar.make(view, getString(R.string.cache_cleared), Snackbar.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
             }
             btnThemes.setOnClickListener {
                 showChangeThemeDialog()
@@ -70,7 +80,7 @@ class SettingsFragment : Fragment() {
                 getString(R.string.system_default)
             )
             val dialog = MaterialAlertDialogBuilder(requireContext())
-            val themeSettings = withContext(Dispatchers.IO){
+            val themeSettings = withContext(Dispatchers.IO) {
                 viewModel.getThemeSettings()
             }
             var selectedItem = when (themeSettings) {
@@ -98,8 +108,6 @@ class SettingsFragment : Fragment() {
                 }
             dialog.show()
         }
-
-
     }
 
 

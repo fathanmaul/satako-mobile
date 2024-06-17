@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import androidx.exifinterface.media.ExifInterface
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -131,4 +133,8 @@ fun deleteFromUri(uri: Uri) {
     if (file.exists()) {
         file.delete()
     }
+}
+
+fun deleteCache(context: Context) {
+    context.externalCacheDir?.deleteRecursively()
 }
