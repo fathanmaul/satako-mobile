@@ -17,14 +17,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.yalantis.ucrop.UCrop
+import dev.capstone.satako_mobile.R
+import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.databinding.FragmentDiagnoseBinding
+import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.presentation.home.diagnose.camera.CameraActivity
 import dev.capstone.satako_mobile.utils.createCustomTempFile
 import dev.capstone.satako_mobile.utils.deleteFromUri
 import dev.capstone.satako_mobile.utils.gone
 import dev.capstone.satako_mobile.utils.reduceFileImage
 import dev.capstone.satako_mobile.utils.show
+import dev.capstone.satako_mobile.utils.showBottomSheetDialog
 import dev.capstone.satako_mobile.utils.uriToFile
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 class DiagnoseFragment : Fragment() {
@@ -38,7 +45,9 @@ class DiagnoseFragment : Fragment() {
         FragmentDiagnoseBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: DiagnoseViewModel by viewModels()
+    private val viewModel: DiagnoseViewModel by viewModels {
+        ViewModelFactory(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +65,7 @@ class DiagnoseFragment : Fragment() {
                 view.findNavController().popBackStack()
             }
             buttonDiagnose.setOnClickListener { view ->
-                toResult(view)
+                predict(view)
             }
             galleryCard.setOnClickListener {
                 if (!isPickImage) {
@@ -128,17 +137,56 @@ class DiagnoseFragment : Fragment() {
     }
 
 
-    private fun toResult(view: View) {
+    private fun predict(view: View) {
         if (currentImageUri != null) {
-            val toResultFragment =
-                DiagnoseFragmentDirections.actionDiagnoseFragmentToResultFragment(
-                    currentImageUri.toString()
+            currentImageUri?.let { uri ->
+                val imageFile = uriToFile(uri, requireContext()).reduceFileImage()
+                showLoading(true)
+
+                val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+                val multipartBody = MultipartBody.Part.createFormData(
+                    "file",
+                    imageFile.name,
+                    requestImageFile
                 )
-            isPickImage = false
-            view.findNavController().navigate(toResultFragment)
+
+                viewModel.predict(multipartBody).observe(viewLifecycleOwner) {
+                    if (it != null) {
+                     when (it) {
+                         is Result.Error -> {
+                             showLoading(false)
+                             showBottomSheetDialog(
+                                 requireContext(),
+                                 getString(R.string.failed_to_predict),
+                                 R.drawable.error_image,
+                                 buttonColorResId = R.color.danger,
+                                 onClick = {}
+                             )
+                         }
+                         Result.Loading -> showLoading(true)
+                         is Result.Success -> {
+                             showLoading(false)
+                             val toResultFragment =
+                                 DiagnoseFragmentDirections.actionDiagnoseFragmentToResultFragment(
+                                     currentImageUri.toString(),
+                                     it.data.dataPredict,
+                                     null
+                                 )
+                             isPickImage = false
+                             view.findNavController().navigate(toResultFragment)
+                         }
+                     }
+                    }
+                }
+            }
+
         } else {
             Toast.makeText(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.pbDiagnose.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun handleImageUri(uri: Uri) {

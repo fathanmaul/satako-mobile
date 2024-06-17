@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dev.capstone.satako_mobile.di.Injection
+import dev.capstone.satako_mobile.presentation.history.HistoryViewModel
+import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseViewModel
 import dev.capstone.satako_mobile.presentation.login.LoginViewModel
 import dev.capstone.satako_mobile.presentation.profile.ProfileViewModel
 import dev.capstone.satako_mobile.presentation.profile.settings.SettingsViewModel
@@ -30,6 +32,14 @@ class ViewModelFactory(
 
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(Injection.provideRepository(context)) as T
+            }
+
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
+                HistoryViewModel(Injection.provideRepository(context)) as T
+            }
+
+            modelClass.isAssignableFrom(DiagnoseViewModel::class.java) -> {
+                DiagnoseViewModel(Injection.provideRepository(context)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

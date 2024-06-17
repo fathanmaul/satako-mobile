@@ -29,7 +29,6 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @Multipart
     @GET("predict/histories")
     suspend fun getHistory(): HistoryResponse
 

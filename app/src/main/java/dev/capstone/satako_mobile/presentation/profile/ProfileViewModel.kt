@@ -1,6 +1,8 @@
 package dev.capstone.satako_mobile.presentation.profile
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dev.capstone.satako_mobile.data.repository.DataRepository
 import kotlinx.coroutines.launch
@@ -13,5 +15,14 @@ class ProfileViewModel(private val repository: DataRepository) : ViewModel() {
             callback()
         }
     }
+
+    fun getUsername(): LiveData<String> {
+        return repository.getUsername().asLiveData()
+    }
+
+    fun getEmail(): LiveData<String> {
+        return repository.getEmail().asLiveData()
+    }
+
 
 }

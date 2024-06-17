@@ -5,19 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="24dp"
-    android:paddingTop="50dp"
+    android:paddingTop="24dp"
     tools:context=".presentation.history.HistoryFragment">
+
+
+    <ImageButton
+        android:id="@+id/back_button"
+        style="@style/BackButton"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:contentDescription="@string/back_button"
+        android:scaleType="fitCenter"
+        android:src="@drawable/bi_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/history_heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/manrope_extrabold"
         android:text="History"
         android:textSize="39sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
 
     <TextView
         android:id="@+id/history_subheading"
@@ -42,6 +55,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/history_subheading"
         tools:listitem="@layout/item_history" />
+
+    <ProgressBar
+        android:id="@+id/pb_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/history_recycler_view"
+        app:layout_constraintStart_toStartOf="@+id/history_recycler_view"
+        app:layout_constraintTop_toBottomOf="@+id/history_subheading" />
 
     <RelativeLayout
         android:id="@+id/history_empty_view"

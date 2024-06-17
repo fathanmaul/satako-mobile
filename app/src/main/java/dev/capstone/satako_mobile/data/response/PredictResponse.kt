@@ -1,33 +1,33 @@
 package dev.capstone.satako_mobile.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class PredictResponse(
 
-    @field:SerializedName("data")
-	val data: Data? = null,
+	@field:SerializedName("data")
+	val dataPredict: DataPredict,
 
-    @field:SerializedName("error")
-	val error: Boolean? = null,
+	@field:SerializedName("message")
+	val message: String? = null,
 
-    @field:SerializedName("message")
-	val message: String? = null
+	@field:SerializedName("status")
+	val status: String? = null
 )
 
-data class Data(
+@Parcelize
+data class DataPredict(
 
-	@field:SerializedName("result")
-	val result: String? = null,
+	@field:SerializedName("disease")
+	val disease: String? = null,
 
-	@field:SerializedName("createdAt")
-	val createdAt: String? = null,
+	@field:SerializedName("solutions")
+	val solutions: String? = null,
 
-	@field:SerializedName("suggestion")
-	val suggestion: String? = null,
+	@field:SerializedName("causes")
+	val causes: String? = null,
 
 	@field:SerializedName("description")
-	val description: String? = null,
-
-	@field:SerializedName("id")
-	val id: String? = null
-)
+	val description: String? = null
+): Parcelable

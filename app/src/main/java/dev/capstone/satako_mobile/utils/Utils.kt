@@ -16,6 +16,7 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
@@ -35,10 +36,8 @@ fun formatIsoDate(isoDateString: String): String {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val isoFormatter = DateTimeFormatter.ISO_DATE_TIME
         val localDateTime = LocalDateTime.parse(isoDateString, isoFormatter)
-        val zonedDateTime = localDateTime.atZone(ZoneId.of("UTC"))
-            .withZoneSameInstant(ZoneId.of(indonesianTimeZone))
-        val readableFormatter =
-            DateTimeFormatter.ofPattern("dd MMMM yyyy, HH:mm:ss", indonesianLocale)
+        val zonedDateTime = localDateTime.atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of(indonesianTimeZone))
+        val readableFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy, HH:mm:ss", indonesianLocale)
         zonedDateTime.format(readableFormatter)
     } else {
         val isoFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)

@@ -105,6 +105,14 @@
             android:name="image_uri"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="PredictResult"
+            app:argType="dev.capstone.satako_mobile.data.response.DataPredict"
+            app:nullable="true" />
+        <argument
+            android:name="History"
+            app:argType="dev.capstone.satako_mobile.data.response.HistoryItem"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/profile_fragment"

@@ -4,15 +4,17 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.databinding.FragmentResultBinding
+import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseViewModel
+import dev.capstone.satako_mobile.utils.date
+import dev.capstone.satako_mobile.utils.formatIsoDate
 
 class ResultFragment : Fragment() {
 
@@ -20,12 +22,14 @@ class ResultFragment : Fragment() {
         FragmentResultBinding.inflate(layoutInflater)
     }
 
-    private val diagnoseViewModel: DiagnoseViewModel by viewModels()
+    private val diagnoseViewModel: DiagnoseViewModel by viewModels {
+        ViewModelFactory(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -35,10 +39,29 @@ class ResultFragment : Fragment() {
 
         animateResult()
         val imageUri = ResultFragmentArgs.fromBundle(arguments as Bundle).imageUri
+        val predictResult = ResultFragmentArgs.fromBundle(arguments as Bundle).predictResult
+        val history = ResultFragmentArgs.fromBundle(arguments as Bundle).history
         with(binding) {
             backButton.setOnClickListener {
                 view.findNavController().popBackStack()
             }
+
+            if (history != null) {
+                diseaseNameTextView.text = history.disease
+                dateTextView.text = history.createdAt?.let { formatIsoDate(it) }
+                descriptionText.text = history.description
+                causesText.text = history.causes
+                solutionText.text = history.solutions
+            } else {
+                if (predictResult != null) {
+                    diseaseNameTextView.text = predictResult.disease
+                    dateTextView.text = date
+                    descriptionText.text = predictResult.description
+                    causesText.text = predictResult.causes
+                    solutionText.text = predictResult.solutions
+                }
+            }
+
         }
         diagnoseViewModel.setImageUri(
             imageUri?.let { Uri.parse(it) }
@@ -55,6 +78,8 @@ class ResultFragment : Fragment() {
             ObjectAnimator.ofFloat(binding.dateTextContainer, View.ALPHA, 1f).setDuration(500)
         val descriptionContainer =
             ObjectAnimator.ofFloat(binding.descriptionContainer, View.ALPHA, 1f).setDuration(500)
+        val causesContainer =
+            ObjectAnimator.ofFloat(binding.causesContainer, View.ALPHA, 1f).setDuration(500)
         val solutionContainer =
             ObjectAnimator.ofFloat(binding.solutionContainer, View.ALPHA, 1f).setDuration(500)
         AnimatorSet().apply {
@@ -62,6 +87,7 @@ class ResultFragment : Fragment() {
                 diseaseTextView,
                 dateTextContainer,
                 descriptionContainer,
+                causesContainer,
                 solutionContainer
             )
             start()

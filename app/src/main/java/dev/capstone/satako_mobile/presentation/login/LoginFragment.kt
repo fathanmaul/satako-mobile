@@ -24,6 +24,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dev.capstone.satako_mobile.R
+import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.databinding.FragmentLoginBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.utils.showBottomSheetDialog
@@ -62,44 +63,44 @@ class LoginFragment : Fragment() {
                 view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
 
-            googleSignInButton?.setOnClickListener {
+            googleSignInButton.setOnClickListener {
                 signInWithGoogle()
             }
 
             signInButton.setOnClickListener {
-                loginViewModel.saveTokenSession("asdkjakjsdba") {
-                    toHome(view)
+                val email = emailEditText.text.toString()
+                val password = passwordEditText.text.toString()
+
+                loginViewModel.login(email, password).observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        when (it) {
+                            is Result.Error -> {
+                                showLoading(false)
+                                showBottomSheetDialog(
+                                    requireContext(),
+                                    getString(R.string.login_failed),
+                                    R.drawable.error_image,
+                                    buttonColorResId = R.color.danger,
+                                    onClick = {}
+                                )
+                            }
+
+                            Result.Loading -> showLoading(true)
+                            is Result.Success -> {
+                                showLoading(false)
+                                val token = it.data.dataLogin?.token
+                                val username = it.data.dataLogin?.customUser?.username
+                                val emailUser = it.data.dataLogin?.customUser?.email
+
+                                if (token != null && username != null && emailUser != null) {
+                                    loginViewModel.saveTokenSession(token, username, email) {
+                                        toHome(view)
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-
-
-//                val email = emailEditText.text.toString()
-//                val password = passwordEditText.text.toString()
-//
-//                loginViewModel.login(email, password).observe(viewLifecycleOwner) {
-//                    if (it != null) {
-//                        when (it) {
-//                            is Result.Error -> {
-//                                showLoading(false)
-//                                showBottomSheetDialog(
-//                                    requireContext(),
-//                                    getString(R.string.login_failed),
-//                                    R.drawable.error_image,
-//                                    buttonColorResId = R.color.danger,
-//                                    onClick = {}
-//                                )
-//                            }
-//
-//                            Result.Loading -> showLoading(true)
-//                            is Result.Success -> {
-//                                showLoading(false)
-//                                val token = it.data.loginResult.token
-//                                loginViewModel.saveTokenSession(token) {
-//                                    toHome(view)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
             }
         }
     }
@@ -169,17 +170,16 @@ class LoginFragment : Fragment() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             val token = currentUser.getIdToken(true).toString()
-            loginViewModel.saveTokenSession(token) {
-                toHome(requireView())
+            val username = currentUser.displayName
+            val email = currentUser.email
+
+            if (username != null && email != null) {
+                loginViewModel.saveTokenSession(token, username, email) {
+                    toHome(requireView())
+                }
             }
         } else {
-            showBottomSheetDialog(
-                requireContext(),
-                getString(R.string.login_failed),
-                R.drawable.error_image,
-                buttonColorResId = R.color.danger,
-                onClick = {}
-            )
+            errorBottomSheet(getString(R.string.login_failed))
         }
     }
 
