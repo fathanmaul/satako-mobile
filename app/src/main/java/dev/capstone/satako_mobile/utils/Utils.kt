@@ -5,20 +5,50 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import androidx.exifinterface.media.ExifInterface
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
-private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
-private const val MAXIMAL_SIZE = 1000000
+private const val DATE_FORMAT = "dd MMMM yyyy, HH:mm:ss"
+private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale("en", "ID")).format(Date())
+val date: String = SimpleDateFormat(DATE_FORMAT, Locale.US).format(Date())
+private const val MAXIMAL_SIZE = 2000000
+
+fun formatIsoDate(isoDateString: String): String {
+    val indonesianLocale = Locale("en", "ID")
+    val indonesianTimeZone = "Asia/Jakarta" // Time zone for Western Indonesia Time (WIB)
+
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val isoFormatter = DateTimeFormatter.ISO_DATE_TIME
+        val localDateTime = LocalDateTime.parse(isoDateString, isoFormatter)
+        val zonedDateTime = localDateTime.atZone(ZoneId.of("UTC"))
+            .withZoneSameInstant(ZoneId.of(indonesianTimeZone))
+        val readableFormatter =
+            DateTimeFormatter.ofPattern("dd MMMM yyyy, HH:mm:ss", indonesianLocale)
+        zonedDateTime.format(readableFormatter)
+    } else {
+        val isoFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+        isoFormatter.timeZone = TimeZone.getTimeZone("UTC")
+        val date: Date = isoFormatter.parse(isoDateString)!!
+        val readableFormatter = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", indonesianLocale)
+        readableFormatter.timeZone = TimeZone.getTimeZone(indonesianTimeZone)
+        readableFormatter.format(date)
+    }
+}
 
 fun uriToFile(imageUri: Uri, context: Context): File {
     val myFile = createCustomTempFile(context)
@@ -104,4 +134,8 @@ fun deleteFromUri(uri: Uri) {
     if (file.exists()) {
         file.delete()
     }
+}
+
+fun deleteCache(context: Context) {
+    context.externalCacheDir?.deleteRecursively()
 }
