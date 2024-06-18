@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.capstone.satako_mobile.data.response.HistoryItem
 import dev.capstone.satako_mobile.databinding.ItemHistoryBinding
 import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseFragmentDirections
-import dev.capstone.satako_mobile.utils.formatIsoDate
+import dev.capstone.satako_mobile.utils.DateFormatter.formatIsoDate
 
 
 class HistoryAdapter() : ListAdapter<HistoryItem, HistoryAdapter.HistoryViewHolder>(DIFF_CALLBACK) {
