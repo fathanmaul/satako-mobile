@@ -29,25 +29,6 @@ private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale("en", "
 val date: String = SimpleDateFormat(DATE_FORMAT, Locale.US).format(Date())
 private const val MAXIMAL_SIZE = 2000000
 
-fun formatIsoDate(isoDateString: String): String {
-    val indonesianLocale = Locale("en", "ID")
-    val indonesianTimeZone = "Asia/Jakarta" // Time zone for Western Indonesia Time (WIB)
-
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val isoFormatter = DateTimeFormatter.ISO_DATE_TIME
-        val localDateTime = LocalDateTime.parse(isoDateString, isoFormatter)
-        val zonedDateTime = localDateTime.atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of(indonesianTimeZone))
-        val readableFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy, HH:mm:ss", indonesianLocale)
-        zonedDateTime.format(readableFormatter)
-    } else {
-        val isoFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
-        isoFormatter.timeZone = TimeZone.getTimeZone("UTC")
-        val date: Date = isoFormatter.parse(isoDateString)!!
-        val readableFormatter = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", indonesianLocale)
-        readableFormatter.timeZone = TimeZone.getTimeZone(indonesianTimeZone)
-        readableFormatter.format(date)
-    }
-}
 
 fun uriToFile(imageUri: Uri, context: Context): File {
     val myFile = createCustomTempFile(context)

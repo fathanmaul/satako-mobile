@@ -13,8 +13,9 @@ import androidx.navigation.findNavController
 import dev.capstone.satako_mobile.databinding.FragmentResultBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseViewModel
+import dev.capstone.satako_mobile.utils.DateFormatter.formatIsoDate
 import dev.capstone.satako_mobile.utils.date
-import dev.capstone.satako_mobile.utils.formatIsoDate
+
 
 class ResultFragment : Fragment() {
 
