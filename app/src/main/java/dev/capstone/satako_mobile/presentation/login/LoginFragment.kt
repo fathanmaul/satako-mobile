@@ -1,9 +1,12 @@
 package dev.capstone.satako_mobile.presentation.login
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
@@ -17,6 +20,8 @@ import androidx.navigation.findNavController
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,6 +32,10 @@ import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.databinding.FragmentLoginBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
+import dev.capstone.satako_mobile.utils.TextListener
+import dev.capstone.satako_mobile.utils.gone
+import dev.capstone.satako_mobile.utils.isEmailValid
+import dev.capstone.satako_mobile.utils.show
 import dev.capstone.satako_mobile.utils.showBottomSheetDialog
 import kotlinx.coroutines.launch
 
@@ -40,6 +49,7 @@ class LoginFragment : Fragment() {
     }
 
     private lateinit var auth: FirebaseAuth
+    private var loadingDialog: AlertDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,14 +72,42 @@ class LoginFragment : Fragment() {
             registerTextView.setOnClickListener {
                 view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
+            emailEditText.addTextChangedListener(object : TextListener {
+                override fun onTextListener(s: CharSequence?) {
+                    if (!s.isNullOrEmpty()) {
+                        if (!s.toString().isEmailValid()) {
+                            binding.tvEmailError?.text = getString(R.string.invalid_email)
+                            binding.tvEmailError?.show()
+                        } else {
+                            binding.tvEmailError?.gone()
+                        }
+                    } else {
+                        binding.tvEmailError?.text = getString(R.string.email_empty)
+                        binding.tvEmailError?.show()
+                    }
 
-            googleSignInButton.setOnClickListener {
-                signInWithGoogle()
-            }
+                }
+            })
+            passwordEditText.addTextChangedListener(object : TextListener {
+                override fun onTextListener(s: CharSequence?) {
+                    if (s.toString().isEmpty()) {
+                        binding.tvPasswordError?.text = getString(R.string.password_empty)
+                        binding.tvPasswordError?.show()
+                    } else {
+                        binding.tvPasswordError?.gone()
+                    }
+                }
+            })
+
+//            googleSignInButton.setOnClickListener {
+//                signInWithGoogle()
+//            }
 
             signInButton.setOnClickListener {
-                val email = emailEditText.text.toString()
-                val password = passwordEditText.text.toString()
+                val email = emailEditText.text.toString().trim()
+                val password = passwordEditText.text.toString().trim()
+
+                if (!validateLogin(email, password)) return@setOnClickListener
 
                 loginViewModel.login(email, password).observe(viewLifecycleOwner) {
                     if (it != null) {
@@ -184,7 +222,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.pbLogin.visibility = if (isLoading) View.VISIBLE else View.GONE
+        showLoadingDialog(isLoading)
     }
 
     private fun toHome(view: View) {
@@ -203,4 +241,52 @@ class LoginFragment : Fragment() {
             onClick = {}
         )
     }
+
+    override fun onPause() {
+        super.onPause()
+        binding.passwordEditText.text?.clear()
+    }
+
+    private fun validateLogin(
+        email: String,
+        password: String
+    ): Boolean {
+        if (email.isEmpty()) {
+            binding.tvEmailError?.text = getString(R.string.email_empty)
+            binding.tvEmailError?.show()
+            return false
+        }
+
+        if (!email.isEmailValid()){
+            binding.tvEmailError?.text = getString(R.string.invalid_email)
+            binding.tvEmailError?.show()
+            return false
+        }
+
+        if (password.isEmpty()) {
+            binding.tvPasswordError?.text = getString(R.string.password_empty)
+            binding.tvPasswordError?.show()
+            return false
+        }
+        return true
+    }
+
+    private fun showLoadingDialog(
+        state: Boolean
+    ) {
+        if (state) {
+            if (loadingDialog == null) {
+                loadingDialog = MaterialAlertDialogBuilder(requireContext())
+                    .setMessage("Please wait...")
+                    .setCancelable(false)
+                    .create()
+            }
+            loadingDialog?.show()
+        } else {
+            loadingDialog?.dismiss()
+            loadingDialog = null
+        }
+    }
+
+
 }

@@ -35,3 +35,15 @@ fun File.delete(context: Context): Boolean {
 
     return !this.exists()
 }
+
+fun String.removeWhiteSpace(): String {
+    return this.replace("\\s+".toRegex(), "")
+}
+
+fun String.isEmailValid(): Boolean {
+    return android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+}
+
+fun String.isNameValid(): Boolean {
+    return this.length in 3..50
+}

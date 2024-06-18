@@ -1,16 +1,21 @@
 package dev.capstone.satako_mobile.presentation.register
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.databinding.FragmentRegisterBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.R
+import dev.capstone.satako_mobile.utils.isEmailValid
 import dev.capstone.satako_mobile.utils.showBottomSheetDialog
 
 
@@ -21,6 +26,7 @@ class RegisterFragment : Fragment() {
     private val registerViewModel: RegisterViewModel by viewModels {
         ViewModelFactory(requireContext())
     }
+    private var loadingDialog: AlertDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +50,13 @@ class RegisterFragment : Fragment() {
                 val password = passwordEditText.text.toString().trim()
                 val confirmPassword = confirmPasswordEditText.text.toString().trim()
 
+                if (!validateRegister(
+                        name,
+                        email,
+                        password,
+                        confirmPassword
+                    )
+                ) return@setOnClickListener
                 registerViewModel.register(name, email, password, confirmPassword)
                     .observe(viewLifecycleOwner) {
                         if (it != null) {
@@ -53,7 +66,8 @@ class RegisterFragment : Fragment() {
                                     showBottomSheetDialog(
                                         requireContext(),
                                         getString(R.string.register_error),
-                                        R.drawable.error_image
+                                        R.drawable.error_image,
+                                        buttonColorResId = R.color.danger,
                                     )
                                 }
 
@@ -75,6 +89,19 @@ class RegisterFragment : Fragment() {
                             }
                         }
                     }
+
+//                showLoading(true)
+//                Handler(Looper.getMainLooper()).postDelayed({
+//                    showLoading(false)
+//                    showBottomSheetDialog(
+//                        requireContext(),
+//                        getString(R.string.success_register),
+//                        R.drawable.success_image,
+//                        onClick = {
+//                            view.findNavController().popBackStack()
+//                        }
+//                    )
+//                }, 3000)
             }
         }
     }
@@ -82,10 +109,76 @@ class RegisterFragment : Fragment() {
     private fun showLoading(state: Boolean) {
         with(binding) {
             if (state) {
-                pbRegister.visibility = View.VISIBLE
+//                pbRegister.visibility = View.VISIBLE
+                registerButton.isEnabled = false
+                backButton.isEnabled = false
+                showLoadingDialog(true)
             } else {
-                pbRegister.visibility = View.GONE
+//                pbRegister.visibility = View.GONE
+                registerButton.isEnabled = true
+                backButton.isEnabled = true
+                showLoadingDialog(false)
             }
+        }
+    }
+
+    private fun validateRegister(
+        name: String,
+        email: String,
+        password: String,
+        confirmPassword: String
+    ): Boolean {
+        var isValid = true
+        if (name.isEmpty()) {
+            binding.nameEditText.error = getString(R.string.required_name)
+            isValid = false
+        } else {
+            binding.nameEditText.error = null
+        }
+
+        if (email.isEmpty()) {
+            binding.emailEditText.error = getString(R.string.required_email)
+            isValid = false
+        } else if (!email.isEmailValid()) {
+            binding.emailEditText.error = getString(R.string.invalid_email)
+            isValid = false
+        } else {
+            binding.emailEditText.error = null
+        }
+
+        if (password.isEmpty()) {
+            binding.passwordEditText.error = getString(R.string.required_password)
+            isValid = false
+        } else {
+            binding.passwordEditText.error = null
+        }
+
+        if (confirmPassword.isEmpty()) {
+            binding.confirmPasswordEditText.error = getString(R.string.required_confirm_password)
+            isValid = false
+        } else if (password != confirmPassword) {
+            binding.confirmPasswordEditText.error = getString(R.string.password_not_match)
+            isValid = false
+        } else {
+            binding.confirmPasswordEditText.error = null
+        }
+        return isValid
+    }
+
+    private fun showLoadingDialog(
+        state: Boolean
+    ) {
+        if (state) {
+            if (loadingDialog == null) {
+                loadingDialog = MaterialAlertDialogBuilder(requireContext())
+                    .setMessage("Please wait...")
+                    .setCancelable(false)
+                    .create()
+            }
+            loadingDialog?.show()
+        } else {
+            loadingDialog?.dismiss()
+            loadingDialog = null
         }
     }
 
