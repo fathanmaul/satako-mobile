@@ -72,10 +72,23 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 
 
-    //testing
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Espresso core
+    androidTestImplementation (libs.androidx.espresso.core)
+    androidTestImplementation (libs.androidx.espresso.intents)
+    androidTestImplementation (libs.androidx.espresso.contrib)
+    implementation(libs.androidx.espresso.idling.resource)
+
+    // JUnit
+    testImplementation (libs.junit)
+    androidTestImplementation (libs.androidx.junit)
+
+    // Fragment testing
+    debugImplementation (libs.androidx.fragment.testing)
+
+    // AndroidX Test - Core library
+    androidTestImplementation (libs.androidx.core)
+    androidTestImplementation (libs.androidx.rules)
+    androidTestImplementation (libs.androidx.runner)
 
     //ucrop
     implementation (libs.ucrop)

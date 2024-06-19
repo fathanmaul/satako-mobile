@@ -127,6 +127,7 @@ class LoginFragment : Fragment() {
                             }
 
                             Result.Loading -> showLoading(true)
+
                             is Result.Success -> {
                                 showLoading(false)
                                 val token = it.data.dataLogin?.token
