@@ -13,6 +13,7 @@
         <ImageView
             android:id="@+id/history_image_view"
             android:layout_width="96dp"
+            android:scaleType="centerCrop"
             android:layout_height="wrap_content"
             android:contentDescription="@string/history_image_view"
             android:src="@drawable/sample_scan" />
