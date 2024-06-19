@@ -91,4 +91,18 @@
     <string name="causes">Causes</string>
     <string name="failed_to_predict">Failed to Predict. Please Try Again</string>
     <string name="cache_cleared">Cache Cleared</string>
+    <string name="password_must_be_at_least_8_characters">Password must be at least 8 characters</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="required_email">Email is required</string>
+    <string name="required_password">Password is required</string>
+    <string name="required_name">Name is required</string>
+    <string name="required_confirm_password">Confirm Password is required</string>
+    <string name="password_not_match">Password doesn\'t match</string>
+    <string name="loading">Loading</string>
+    <string name="password_empty">Password is Empty</string>
+    <string name="email_empty">Email is Empty</string>
+    <string name="name_empty">Name is Empty</string>
+    <string name="confirm_password_empty">Confirm Password is Empty</string>
+    <string name="name_invalid">Name must be between 3 and 50 characters</string>
+    <string name="password_invalid">Password must be at least 8 characters long</string>
 </resources>
