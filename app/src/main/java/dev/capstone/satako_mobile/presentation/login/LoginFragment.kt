@@ -82,17 +82,20 @@ class LoginFragment : Fragment() {
                             binding.tvEmailError?.gone()
                         }
                     } else {
-                        binding.tvEmailError?.text = getString(R.string.email_empty)
-                        binding.tvEmailError?.show()
+                        binding.tvEmailError?.gone()
                     }
 
                 }
             })
             passwordEditText.addTextChangedListener(object : TextListener {
                 override fun onTextListener(s: CharSequence?) {
-                    if (s.toString().isEmpty()) {
-                        binding.tvPasswordError?.text = getString(R.string.password_empty)
-                        binding.tvPasswordError?.show()
+                    if (!s.isNullOrEmpty()) {
+                        if (s.toString().isEmpty()) {
+                            binding.tvPasswordError?.text = getString(R.string.password_empty)
+                            binding.tvPasswordError?.show()
+                        } else {
+                            binding.tvEmailError?.gone()
+                        }
                     } else {
                         binding.tvPasswordError?.gone()
                     }
@@ -257,7 +260,7 @@ class LoginFragment : Fragment() {
             return false
         }
 
-        if (!email.isEmailValid()){
+        if (!email.isEmailValid()) {
             binding.tvEmailError?.text = getString(R.string.invalid_email)
             binding.tvEmailError?.show()
             return false
