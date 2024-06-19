@@ -57,7 +57,7 @@ class ArticleFragment : Fragment(), OnArticleClickListener {
             dummyList.add(
                 Article(
                     listTitles[i],
-                    "Author ${i+1}",
+                    "Penulis ${i+1}",
                     listImage.getResourceId(i, -1),
                     listDescription[i]
                 )

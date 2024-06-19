@@ -36,9 +36,9 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            backButton.setOnClickListener {
-                view.findNavController().popBackStack()
-            }
+//            backButton.setOnClickListener {
+//                view.findNavController().popBackStack()
+//            }
         }
 
         getHistory()

@@ -73,7 +73,7 @@
                         android:layout_marginTop="21dp"
                         android:layout_marginBottom="12dp"
                         android:fontFamily="@font/manrope_bold"
-                        android:text="Have a problem with your plant?"
+                        android:text="@string/home_card_diagnose"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
