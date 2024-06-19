@@ -47,3 +47,7 @@ fun String.isEmailValid(): Boolean {
 fun String.isNameValid(): Boolean {
     return this.length in 3..50
 }
+
+fun String.isPasswordValid(): Boolean {
+    return this.length in 8..50
+}

@@ -6,6 +6,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,7 +16,11 @@ import dev.capstone.satako_mobile.data.response.Result
 import dev.capstone.satako_mobile.databinding.FragmentRegisterBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.R
+import dev.capstone.satako_mobile.utils.TextListener
+import dev.capstone.satako_mobile.utils.ValidationAuth
+import dev.capstone.satako_mobile.utils.gone
 import dev.capstone.satako_mobile.utils.isEmailValid
+import dev.capstone.satako_mobile.utils.show
 import dev.capstone.satako_mobile.utils.showBottomSheetDialog
 
 
@@ -44,6 +49,59 @@ class RegisterFragment : Fragment() {
                 view.findNavController().popBackStack()
             }
 
+            nameEditText.addTextChangedListener(object : TextListener {
+                override fun onTextListener(s: CharSequence?) {
+                    ValidationAuth.isFieldEmpty(
+                        s.toString().trim(),
+                        tvNameError,
+                        requireContext().getString(R.string.name_empty)
+                    )
+
+                    ValidationAuth.validateName(
+                        requireContext(),
+                        s.toString().trim(),
+                        tvNameError
+                    )
+                }
+            })
+
+            emailEditText.addTextChangedListener(object : TextListener {
+                override fun onTextListener(s: CharSequence?) {
+                    ValidationAuth.isFieldEmpty(
+                        s.toString().trim(),
+                        tvEmailError,
+                        requireContext().getString(R.string.email_empty)
+                    )
+
+                    ValidationAuth.validateEmail(
+                        requireContext(),
+                        s.toString().trim(),
+                        tvEmailError
+                    )
+                }
+            })
+
+            passwordEditText.addTextChangedListener(object : TextListener {
+                override fun onTextListener(s: CharSequence?) {
+                    ValidationAuth.validatePassword(
+                        requireContext(),
+                        s.toString().trim(),
+                        tvPasswordError
+                    )
+                }
+            })
+
+            confirmPasswordEditText.addTextChangedListener(object : TextListener {
+                override fun onTextListener(s: CharSequence?) {
+                    ValidationAuth.validatePasswordMatch(
+                        requireContext(),
+                        passwordEditText.text.toString().trim(),
+                        s.toString().trim(),
+                        tvConfirmPasswordError
+                    )
+                }
+            })
+
             registerButton.setOnClickListener {
                 val name = nameEditText.text.toString().trim()
                 val email = emailEditText.text.toString().trim()
@@ -57,38 +115,38 @@ class RegisterFragment : Fragment() {
                         confirmPassword
                     )
                 ) return@setOnClickListener
-                registerViewModel.register(name, email, password, confirmPassword)
-                    .observe(viewLifecycleOwner) {
-                        if (it != null) {
-                            when (it) {
-                                is Result.Error -> {
-                                    showLoading(false)
-                                    showBottomSheetDialog(
-                                        requireContext(),
-                                        getString(R.string.register_error),
-                                        R.drawable.error_image,
-                                        buttonColorResId = R.color.danger,
-                                    )
-                                }
-
-                                is Result.Loading -> {
-                                    showLoading(true)
-                                }
-
-                                is Result.Success -> {
-                                    showLoading(false)
-                                    showBottomSheetDialog(
-                                        requireContext(),
-                                        getString(R.string.success_register),
-                                        R.drawable.success_image,
-                                        onClick = {
-                                            view.findNavController().popBackStack()
-                                        }
-                                    )
-                                }
-                            }
-                        }
-                    }
+//                registerViewModel.register(name, email, password, confirmPassword)
+//                    .observe(viewLifecycleOwner) {
+//                        if (it != null) {
+//                            when (it) {
+//                                is Result.Error -> {
+//                                    showLoading(false)
+//                                    showBottomSheetDialog(
+//                                        requireContext(),
+//                                        getString(R.string.register_error),
+//                                        R.drawable.error_image,
+//                                        buttonColorResId = R.color.danger,
+//                                    )
+//                                }
+//
+//                                is Result.Loading -> {
+//                                    showLoading(true)
+//                                }
+//
+//                                is Result.Success -> {
+//                                    showLoading(false)
+//                                    showBottomSheetDialog(
+//                                        requireContext(),
+//                                        getString(R.string.success_register),
+//                                        R.drawable.success_image,
+//                                        onClick = {
+//                                            view.findNavController().popBackStack()
+//                                        }
+//                                    )
+//                                }
+//                            }
+//                        }
+//                    }
 
 //                showLoading(true)
 //                Handler(Looper.getMainLooper()).postDelayed({
@@ -122,6 +180,11 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun validateRegister(
         name: String,
         email: String,
@@ -129,39 +192,33 @@ class RegisterFragment : Fragment() {
         confirmPassword: String
     ): Boolean {
         var isValid = true
-        if (name.isEmpty()) {
-            binding.nameEditText.error = getString(R.string.required_name)
-            isValid = false
-        } else {
-            binding.nameEditText.error = null
-        }
 
-        if (email.isEmpty()) {
-            binding.emailEditText.error = getString(R.string.required_email)
+        if (ValidationAuth.isFieldEmpty(
+                name,
+                binding.tvNameError,
+                requireContext().getString(R.string.name_empty)
+            )
+        ) isValid = false
+        if (!ValidationAuth.validateName(requireContext(), name, binding.tvNameError)) isValid =
+            false
+        if (!ValidationAuth.validateEmail(requireContext(), email, binding.tvEmailError)) isValid =
+            false
+        if (ValidationAuth.isFieldEmpty(
+                password,
+                binding.tvPasswordError,
+                requireContext().getString(R.string.required_password)
+            )
+        ) isValid = false
+        if (!ValidationAuth.validatePasswordMatch(
+                requireContext(),
+                password,
+                confirmPassword,
+                binding.tvConfirmPasswordError
+            )
+        ) isValid = false
+        if (!ValidationAuth.validatePassword(requireContext(), password, binding.tvPasswordError))
             isValid = false
-        } else if (!email.isEmailValid()) {
-            binding.emailEditText.error = getString(R.string.invalid_email)
-            isValid = false
-        } else {
-            binding.emailEditText.error = null
-        }
 
-        if (password.isEmpty()) {
-            binding.passwordEditText.error = getString(R.string.required_password)
-            isValid = false
-        } else {
-            binding.passwordEditText.error = null
-        }
-
-        if (confirmPassword.isEmpty()) {
-            binding.confirmPasswordEditText.error = getString(R.string.required_confirm_password)
-            isValid = false
-        } else if (password != confirmPassword) {
-            binding.confirmPasswordEditText.error = getString(R.string.password_not_match)
-            isValid = false
-        } else {
-            binding.confirmPasswordEditText.error = null
-        }
         return isValid
     }
 
@@ -182,7 +239,9 @@ class RegisterFragment : Fragment() {
         }
     }
 
+
 }
+
 //            registerButton?.setOnClickListener {
 //                Jika Berhasil
 //                showBottomSheetDialog(

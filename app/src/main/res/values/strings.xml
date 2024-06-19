@@ -101,4 +101,8 @@
     <string name="loading">Loading</string>
     <string name="password_empty">Password is Empty</string>
     <string name="email_empty">Email is Empty</string>
+    <string name="name_empty">Name is Empty</string>
+    <string name="confirm_password_empty">Confirm Password is Empty</string>
+    <string name="name_invalid">Name must be between 3 and 50 characters</string>
+    <string name="password_invalid">Password must be at least 8 characters long</string>
 </resources>
