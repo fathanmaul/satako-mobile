@@ -3,6 +3,7 @@ package dev.capstone.satako_mobile.presentation.articles
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.model.dummy.Article
 import dev.capstone.satako_mobile.databinding.ItemArticleBinding
 
@@ -18,6 +19,7 @@ class ArticlesAdapter(
                 articleTitle.text = article.title
                 articleAuthor.text = article.author
                 articleDescription.text = article.description
+                articleImageView.setImageResource(article.imageResourceId)
                 articleCard.setOnClickListener {
                     onArticleClickListener.onArticleClick(article)
                 }

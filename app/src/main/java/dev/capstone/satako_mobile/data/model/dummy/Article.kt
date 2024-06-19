@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Article(
     val title: String,
     val author: String,
-    val imageUrl: String,
+    val imageResourceId: Int,
     val description: String
 ) : Parcelable
