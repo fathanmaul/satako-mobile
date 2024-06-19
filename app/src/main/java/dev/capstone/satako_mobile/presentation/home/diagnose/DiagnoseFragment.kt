@@ -12,10 +12,12 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yalantis.ucrop.UCrop
 import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.response.Result
@@ -48,7 +50,7 @@ class DiagnoseFragment : Fragment() {
     private val viewModel: DiagnoseViewModel by viewModels {
         ViewModelFactory(requireContext())
     }
-
+    private var loadingDialog: AlertDialog? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -186,7 +188,8 @@ class DiagnoseFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.pbDiagnose.visibility = if (isLoading) View.VISIBLE else View.GONE
+//        binding.pbDiagnose.visibility = if (isLoading) View.VISIBLE else View.GONE
+        showLoadingDialog(isLoading)
     }
 
     private fun handleImageUri(uri: Uri) {
@@ -207,6 +210,23 @@ class DiagnoseFragment : Fragment() {
         } else {
             binding.previewImageView.gone()
             binding.previewTextView.gone()
+        }
+    }
+
+    private fun showLoadingDialog(
+        state: Boolean
+    ) {
+        if (state) {
+            if (loadingDialog == null) {
+                loadingDialog = MaterialAlertDialogBuilder(requireContext())
+                    .setMessage("Please wait...")
+                    .setCancelable(false)
+                    .create()
+            }
+            loadingDialog?.show()
+        } else {
+            loadingDialog?.dismiss()
+            loadingDialog = null
         }
     }
 }
