@@ -42,12 +42,7 @@ class DetailArticleFragment : Fragment() {
         with(binding) {
             articleTitle.text = article.title
             articleAuthor.text = article.author
-            articleImage.setImageDrawable(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.home_card_image
-                )
-            )
+            articleImage.setImageResource(article.imageResourceId)
             articleDescription.text = article.description
         }
     }

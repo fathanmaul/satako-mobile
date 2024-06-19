@@ -58,13 +58,16 @@ class HomeFragment : Fragment(), OnArticleClickListener {
 
     private fun generateDummyArticles(): List<Article> {
         val dummyList = mutableListOf<Article>()
-        for (i in 0..4) {
+        val listTitles = resources.getStringArray(R.array.article_title)
+        val listDescription = resources.getStringArray(R.array.article_desc)
+        val listImage = resources.obtainTypedArray(R.array.article_image)
+        for (i in 1..5) {
             dummyList.add(
                 Article(
-                    "Title $i",
+                    listTitles[i],
                     "Author $i",
-                    "https://picsum.photos/200/300",
-                    description = getString(R.string.example_lorem)
+                    listImage.getResourceId(i, -1),
+                    listDescription[i]
                 )
             )
         }
