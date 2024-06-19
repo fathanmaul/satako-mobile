@@ -115,51 +115,36 @@ class RegisterFragment : Fragment() {
                         confirmPassword
                     )
                 ) return@setOnClickListener
-//                registerViewModel.register(name, email, password, confirmPassword)
-//                    .observe(viewLifecycleOwner) {
-//                        if (it != null) {
-//                            when (it) {
-//                                is Result.Error -> {
-//                                    showLoading(false)
-//                                    showBottomSheetDialog(
-//                                        requireContext(),
-//                                        getString(R.string.register_error),
-//                                        R.drawable.error_image,
-//                                        buttonColorResId = R.color.danger,
-//                                    )
-//                                }
-//
-//                                is Result.Loading -> {
-//                                    showLoading(true)
-//                                }
-//
-//                                is Result.Success -> {
-//                                    showLoading(false)
-//                                    showBottomSheetDialog(
-//                                        requireContext(),
-//                                        getString(R.string.success_register),
-//                                        R.drawable.success_image,
-//                                        onClick = {
-//                                            view.findNavController().popBackStack()
-//                                        }
-//                                    )
-//                                }
-//                            }
-//                        }
-//                    }
-
-//                showLoading(true)
-//                Handler(Looper.getMainLooper()).postDelayed({
-//                    showLoading(false)
-//                    showBottomSheetDialog(
-//                        requireContext(),
-//                        getString(R.string.success_register),
-//                        R.drawable.success_image,
-//                        onClick = {
-//                            view.findNavController().popBackStack()
-//                        }
-//                    )
-//                }, 3000)
+                registerViewModel.register(name, email, password, confirmPassword)
+                    .observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            when (it) {
+                                is Result.Error -> {
+                                    showLoading(false)
+                                    showBottomSheetDialog(
+                                        requireContext(),
+                                        getString(R.string.register_error),
+                                        R.drawable.error_image,
+                                        buttonColorResId = R.color.danger,
+                                    )
+                                }
+                                is Result.Loading -> {
+                                    showLoading(true)
+                                }
+                                is Result.Success -> {
+                                    showLoading(false)
+                                    showBottomSheetDialog(
+                                        requireContext(),
+                                        getString(R.string.success_register),
+                                        R.drawable.success_image,
+                                        onClick = {
+                                            view.findNavController().popBackStack()
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
             }
         }
     }
