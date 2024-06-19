@@ -25,6 +25,7 @@
         <item name="splash_icon_color">@color/primary</item>
 
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="window_background">@color/background</item>
     </style>
 
     <style name="BackButton" parent="Widget.AppCompat.ImageButton">

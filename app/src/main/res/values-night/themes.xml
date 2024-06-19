@@ -28,7 +28,7 @@
         <item name="splash_icon_color">@color/white</item>
 
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
-
+        <item name="window_background">@color/background_dark</item>
     </style>
 
     <style name="Base.Widget.AppCompat.TextView" parent="Base.Theme.Satakomobile">

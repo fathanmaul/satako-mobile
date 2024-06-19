@@ -11,4 +11,5 @@
     <attr name="background_card_item" format="color" />
     <attr name="splash_icon_color" format="color" />
     <attr name="splash_background_color" format="color" />
+    <attr name="window_background" format="color" />
 </resources>
