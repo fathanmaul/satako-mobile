@@ -61,11 +61,11 @@ class HomeFragment : Fragment(), OnArticleClickListener {
         val listTitles = resources.getStringArray(R.array.article_title)
         val listDescription = resources.getStringArray(R.array.article_desc)
         val listImage = resources.obtainTypedArray(R.array.article_image)
-        for (i in 1..5) {
+        for (i in 0..4) {
             dummyList.add(
                 Article(
                     listTitles[i],
-                    "Author $i",
+                    "Author ${i+1}",
                     listImage.getResourceId(i, -1),
                     listDescription[i]
                 )

@@ -138,16 +138,6 @@ class LoginFragment : Fragment() {
         )
     }
 
-    private fun errorBottomSheet(msg: String) {
-        showBottomSheetDialog(
-            requireContext(),
-            msg,
-            R.drawable.error_image,
-            buttonColorResId = R.color.danger,
-            onClick = {}
-        )
-    }
-
     override fun onPause() {
         super.onPause()
         binding.passwordEditText.text?.clear()
