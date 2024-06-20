@@ -142,7 +142,7 @@ class DiagnoseFragment : Fragment() {
     private fun predict(view: View) {
         if (currentImageUri != null) {
             currentImageUri?.let { uri ->
-                val imageFile = uriToFile(uri, requireContext()).reduceFileImage()
+                val imageFile = File(uri.path.toString())
                 showLoading(true)
 
                 val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())

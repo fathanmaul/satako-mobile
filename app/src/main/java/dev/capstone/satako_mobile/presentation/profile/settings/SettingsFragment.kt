@@ -53,8 +53,10 @@ class SettingsFragment : Fragment() {
                     deleteCache(requireContext())
                     Snackbar.make(view, getString(R.string.cache_cleared), Snackbar.LENGTH_SHORT)
                         .show()
+                    showSizeCache()
                 } catch (e: Exception) {
-                    Snackbar.make(view, getString(R.string.cache_cleared), Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(view, getString(R.string.cache_cleared), Snackbar.LENGTH_SHORT)
+                        .show()
                     e.printStackTrace()
                 }
             }
@@ -69,6 +71,8 @@ class SettingsFragment : Fragment() {
         cacheSize /= 1024
         if (cacheSize != 0L) {
             binding.cacheSize.text = cacheSize.toString()
+        } else {
+            binding.cacheSize.text = "-"
         }
     }
 
