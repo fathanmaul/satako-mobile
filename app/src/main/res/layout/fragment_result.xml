@@ -91,7 +91,7 @@
                     android:fontFamily="@font/manrope_extrabold"
                     android:text="@string/disease_name"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     tools:alpha="100" />
 
                 <LinearLayout
@@ -112,7 +112,7 @@
                         android:fontFamily="@font/manrope_regular"
                         android:text="@string/predicted_on"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/date_text_view"
@@ -121,7 +121,7 @@
                         android:fontFamily="@font/manrope_regular"
                         android:text="@string/example_date_time"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -151,6 +151,7 @@
                     android:id="@+id/description_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/manrope_light"
                     android:text="@string/example_lorem" />
@@ -181,6 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:textSize="18sp"
                     android:fontFamily="@font/manrope_light"
                     android:text="@string/example_lorem" />
 
@@ -210,6 +212,7 @@
                     android:id="@+id/solution_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/manrope_light"
                     android:text="@string/example_lorem" />
