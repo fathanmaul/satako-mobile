@@ -4,12 +4,18 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.BulletSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
+import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.databinding.FragmentResultBinding
 import dev.capstone.satako_mobile.presentation.ViewModelFactory
 import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseViewModel
@@ -52,24 +58,38 @@ class ResultFragment : Fragment() {
                 dateTextView.text = history.createdAt?.let { formatIsoDate(it) }
                 descriptionText.text = history.description
                 causesText.text = history.causes
-                solutionText.text = history.solutions
+                val solutionText = history.solutions?.let { setSolutionText(it) }
+                binding.solutionText.text = Html.fromHtml(solutionText, Html.FROM_HTML_MODE_COMPACT)
+
+                Glide.with(requireContext())
+                    .load(history.imageUrl)
+                    .error(R.drawable.sample_scan)
+                    .into(resultImageView)
             } else {
                 if (predictResult != null) {
                     diseaseNameTextView.text = predictResult.disease
                     dateTextView.text = date
                     descriptionText.text = predictResult.description
                     causesText.text = predictResult.causes
-                    solutionText.text = predictResult.solutions
+                    val solutionText = predictResult.solutions?.let { setSolutionText(it) }
+                    binding.solutionText.text = Html.fromHtml(solutionText, Html.FROM_HTML_MODE_COMPACT)
+                }
+                diagnoseViewModel.setImageUri(
+                    imageUri?.let { Uri.parse(it) }
+                )
+                diagnoseViewModel.imageUri.observe(viewLifecycleOwner) {
+                    showPreview(it)
                 }
             }
 
         }
-        diagnoseViewModel.setImageUri(
-            imageUri?.let { Uri.parse(it) }
-        )
-        diagnoseViewModel.imageUri.observe(viewLifecycleOwner) {
-            showPreview(it)
-        }
+    }
+
+    private fun setSolutionText(text: String): String {
+        val solution = text.trimIndent()
+        val htmlText = solution.split("\n").joinToString("<br>") { "<li>&nbsp;&nbsp;&nbsp;&nbsp;$it</li>" }
+        val finalHtmlText = "<ul>$htmlText</ul>"
+        return finalHtmlText
     }
 
     private fun animateResult() {
