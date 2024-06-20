@@ -7,6 +7,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import dev.capstone.satako_mobile.R
 import dev.capstone.satako_mobile.data.response.HistoryItem
 import dev.capstone.satako_mobile.databinding.ItemHistoryBinding
 import dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseFragmentDirections
@@ -21,6 +23,11 @@ class HistoryAdapter() : ListAdapter<HistoryItem, HistoryAdapter.HistoryViewHold
             with(binding) {
                 historyDiseaseName.text = history.disease
                 historyDate.text = history.createdAt?.let { formatIsoDate(it) }
+                Glide.with(itemView.context)
+                    .load(history.imageUrl)
+                    .placeholder(R.drawable.sample_scan)
+                    .error(R.drawable.sample_scan)
+                    .into(historyImageView)
             }
         }
     }
