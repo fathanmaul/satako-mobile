@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MultipartBody
-import retrofit2.HttpException
 
 class DataRepository private constructor(
     private val userPreference: UserPreference,
@@ -77,8 +76,8 @@ class DataRepository private constructor(
             val apiService = ApiConfig.getApiService(token)
             val response = apiService.predict(file)
             emit(Result.Success(response))
-        } catch (e: HttpException) {
-            emit(Result.Error(e.message()))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
         }
     }
 
@@ -89,8 +88,8 @@ class DataRepository private constructor(
             val apiService = ApiConfig.getApiService(token)
             val response = apiService.getHistory()
             emit(Result.Success(response))
-        } catch (e: HttpException) {
-            emit(Result.Error(e.message()))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
         }
 
     }
