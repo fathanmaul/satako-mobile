@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sheet_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="35dp"
+    android:paddingBottom="35dp">
+
+
+    <ImageView
+        android:id="@+id/sheet_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:contentDescription="@string/image_sheet_description"
+        android:src="@drawable/success_image" />
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/manrope_bold"
+        android:gravity="center"
+        android:text="@string/description"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_sheet"
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/okay" />
+
+
+</LinearLayout>

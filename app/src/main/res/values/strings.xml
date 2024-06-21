@@ -1,3 +1,151 @@
-<resources>
-    <string name="app_name">satako-mobile</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Satako</string>
+    <string name="home">Beranda</string>
+    <string name="history">Riwayat</string>
+    <string name="user">Pengguna</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash_heading">Selamat Datang di Satako</string>
+    <string name="splash_subheading">Mulailah sekarang juga untuk dapat mengidentifikasi penyakit tanaman pokok Anda.</string>
+    <string name="soil_image">Gambar Tanaman</string>
+    <string name="back_button">Back Button</string>
+    <string name="login_heading">Mari daftarkan diri Anda.</string>
+    <string name="login_subheading">Masuk dengan data yang telah Anda masukkan saat anda mendaftar</string>
+    <string name="register_heading">Buat akun Anda sendiri sekarang.</string>
+    <string name="register_subheading">Sebelum itu, silakan isi formulir di bawah ini.</string>
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="confirm_password">Konfirmasi Kata Sandi</string>
+    <string name="sign_in">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="home_card_view">home card view</string>
+    <string name="diagnose_now">Diagnosa Sekarang</string>
+    <string name="history_image_view">History Image View</string>
+    <string name="rice_brown_spot">Rice Brown Spot</string>
+    <string name="example_date_time">July 12, 2021 12:00 PM</string>
+    <string name="data_not_found">Data Tidak Ditemukan</string>
+    <string name="diagnose">Diagnosa</string>
+    <string name="diagnose_subheading">Anda dapat mencoba menggunakan kamera atau memilih foto dari galeri Anda</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="preview_image_view">Preview image view</string>
+    <string name="start_diagnose">Mulai Diagnosa</string>
+    <string name="preview">Pratinjau</string>
+    <string name="result">Hasil</string>
+    <string name="result_subheading">Akhirnya kami dapat menganalisis apa masalah tanaman Anda</string>
+    <string name="description">Deskripsi</string>
+    <string name="example_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, velit nec scelerisque fringilla, lectus est egestas risus, in vehicula tellus diam eu arcu. Fusce facilisis elit semper, pretium arcu ut, ultrices dolor. Aliquam erat volutpat. Nam egestas leo vitae nunc lobortis sagittis. Phasellus varius iaculis quam at posuere. Integer tempor justo in facilisis tempus.</string>
+    <string name="solution">Solusi</string>
+    <string name="predicted_on">Di prediksi pada</string>
+    <string name="profile">Profil</string>
+    <string name="my_account">Akun Saya</string>
+    <string name="profile_subheading">Informasi Anda di tempat ini</string>
+    <string name="settings">Pengaturan</string>
+    <string name="example_email">example@gmail.com</string>
+    <string name="example_username">example_username</string>
+    <string name="themes">Tema</string>
+    <string name="language">Bahasa</string>
+    <string name="clear_cache">Hapus Cache</string>
+    <string name="image_sheet">Image Sheet</string>
+    <string name="button">Tombol</string>
+    <string name="image_sheet_description">image_sheet_description</string>
+    <string name="login_failed">Email / Password salah.Silahkan coba lagi</string>
+    <string name="please_fill_out_all_forms">Mohon isi semua kolom isian</string>
+    <string name="success_register">Akun anda berhasil terdaftar!</string>
+    <string name="disease_name">Nama Penyakit</string>
+    <string name="cache_size">
+        %1$s
+    </string>
+    <string name="dash">-</string>
+    <string name="kb">KB</string>
+    <string name="image_capture_button">Tombol Ambil Gambar</string>
+    <string name="your_web_client_id">482958967330-u3u8ri56geu1at4lalfv3dig6o3jh77f.apps.googleusercontent.com</string>
+    <string name="discover">Jelajahi</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="article_image">Gambar Artikel</string>
+    <string name="example_title">contoh_judul</string>
+    <string name="example_author">contoh_penulis</string>
+    <string name="example_author_name">
+        By %1$s
+    </string>
+    <string name="articles_subheading">Jelajahi apa yang terbaru di sini...</string>
+    <string name="unexpected_type_of_credential">Jenis kredensial yang tidak terduga</string>
+    <string name="failed_login">Gagal untuk Login</string>
+    <string name="failed_to_get_credential">Gagal mengambil akun anda</string>
+    <string name="invalid_googleid">Menerima respons token google id yang tidak valid</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="we_help_you_find_solution_nto_your_plant_problem">Kami membantu Anda menemukan solusi untuk masalah tanaman Anda</string>
+    <string name="hello">Halo,</string>
+    <string name="or">Atau</string>
+    <string name="light">Terang</string>
+    <string name="dark">Gelap</string>
+    <string name="system_default">Bawaan Sistem</string>
+    <string name="failed_to_get_history">Gagal mendapatkan riwayat</string>
+    <string name="causes">Penyebab</string>
+    <string name="failed_to_predict">Gagal Memprediksi. Silakan Coba Lagi</string>
+    <string name="cache_cleared">Cache Terhapus</string>
+    <string name="password_must_be_at_least_8_characters">Kata sandi minimal harus terdiri dari 8 karakter</string>
+    <string name="invalid_email">Email tidak benar</string>
+    <string name="required_email">Email dibutuhkan</string>
+    <string name="required_password">Password dibutuhkan</string>
+    <string name="required_name">Nama dibutuhkan</string>
+    <string name="required_confirm_password">Konfirmasi Kata Sandi dibutuhkan</string>
+    <string name="password_not_match">Kata Sandi tidak cocok</string>
+    <string name="loading">Memuat</string>
+    <string name="password_empty">Password Kosong</string>
+    <string name="email_empty">Email Kosong</string>
+    <string name="name_empty">Name Kosong</string>
+    <string name="confirm_password_empty">Confirm Password Kosong</string>
+    <string name="name_invalid">Nama harus antara 3 dan 50 karakter</string>
+    <string name="password_invalid">Kata sandi minimal harus terdiri dari 8 karakter</string>
+
+    <string-array name="article_title">
+        <item>Beras: Biji-bijian Paling Penting di Dunia</item>
+        <item>Gandum: Pemain Kunci dalam Ketahanan Pangan Global</item>
+        <item>Jagung: Serbaguna dan Penting</item>
+        <item>Kentang: Bahan Pangan Global</item>
+        <item>Singkong: Akar yang Tahan Kekeringan</item>
+        <item>Kedelai: Lebih dari Sekedar Kacang</item>
+        <item>Sorgum: Tanaman yang Tangguh</item>
+        <item>Milet: Biji-bijian yang Bergizi dan Kuat</item>
+        <item>Jelai: Biji-bijian Kuno</item>
+        <item>Ubi: Umbi dengan Banyak Kegunaan</item>
+    </string-array>
+
+    <integer-array name="article_image">
+        <item>@drawable/image1</item>
+        <item>@drawable/image2</item>
+        <item>@drawable/image3</item>
+        <item>@drawable/image4</item>
+        <item>@drawable/image5</item>
+        <item>@drawable/image6</item>
+        <item>@drawable/image7</item>
+        <item>@drawable/image8</item>
+        <item>@drawable/image9</item>
+        <item>@drawable/image10</item>
+    </integer-array>
+
+    <string-array name="article_desc">
+        <item>Beras adalah makanan pokok bagi lebih dari setengah populasi dunia, terutama di Asia. Beras menyediakan nutrisi penting, termasuk karbohidrat, vitamin, dan mineral, sehingga menjadi komponen diet utama di banyak negara.\n\nPenyakit Umum: Beras rentan terhadap beberapa penyakit yang dapat secara signifikan mempengaruhi hasil dan kualitasnya.\n\nBercak Coklat: Disebabkan oleh jamur Cochliobolus miyabeanus, penyakit ini muncul sebagai lesi kecil, bulat, berwarna coklat pada daun, yang dapat menyebabkan penurunan fotosintesis dan kualitas biji yang lebih rendah.\n\nHawar Daun: Salah satu penyakit beras yang paling merusak, disebabkan oleh jamur Magnaporthe oryzae. Ini menyebabkan lesi pada daun, batang, dan malai, yang mengakibatkan kehilangan hasil yang signifikan.\n\nBlight Selubung: Disebabkan oleh jamur Rhizoctonia solani, penyakit ini membentuk lesi pada selubung daun, mengurangi kekuatan tanaman dan kualitas biji.\n\nPengelolaan: Pengelolaan yang efektif termasuk menggunakan varietas tahan penyakit, sanitasi lapangan yang tepat, pemupukan seimbang, dan aplikasi fungisida yang tepat waktu.</item>
+        <item>Gandum sangat penting untuk membuat roti, pasta, dan banyak makanan lainnya. Gandum dibudidayakan secara luas di berbagai iklim, menjadikannya penopang keamanan pangan dunia.\n\nPenyakit Umum: Gandum menghadapi beberapa penyakit yang dapat menghancurkan tanaman jika tidak dikelola dengan baik.\n\nKaratan (Daun, Batang, Garis): Disebabkan oleh berbagai spesies Puccinia, penyakit ini menghasilkan pustula berwarna karat pada daun dan batang, menyebabkan penurunan fotosintesis dan melemahnya tanaman.\n\nJamur Tepung: Disebabkan oleh Blumeria graminis, penyakit ini membentuk pertumbuhan jamur putih, seperti tepung pada daun dan batang, menghambat fotosintesis.\n\nFusarium Head Blight: Disebabkan oleh Fusarium graminearum, penyakit ini menginfeksi kepala gandum, menghasilkan racun yang mencemari biji dan mengurangi hasil.\n\nPengelolaan: Strategi meliputi penanaman varietas tahan penyakit, rotasi tanaman, pemupukan yang tepat, dan aplikasi fungisida pada tahap pertumbuhan yang sesuai.</item>
+        <item>Jagung adalah tanaman serbaguna yang digunakan untuk makanan, pakan, dan biofuel. Jagung adalah makanan pokok di banyak diet di seluruh dunia, menawarkan nutrisi dan energi penting.\n\nPenyakit Umum: Jagung rentan terhadap beberapa penyakit yang dapat secara signifikan mempengaruhi produksi.\n\nVirus Garis Jagung: Ditularkan oleh wereng, menyebabkan garis-garis pada daun, pertumbuhan terhambat, dan penurunan hasil.\n\nBercak Daun Abu-Abu: Disebabkan oleh Cercospora zeae-maydis, penyakit ini membentuk lesi berbentuk persegi panjang pada daun, mengurangi kapasitas fotosintesis dan pengisian biji.\n\nHawar Daun Utara: Disebabkan oleh Exserohilum turcicum, menghasilkan lesi panjang, elips pada daun, menyebabkan kematian daun dini dan penurunan hasil.\n\nPengelolaan: Melaksanakan rotasi tanaman, menggunakan hibrida tahan penyakit, dan aplikasi fungisida yang tepat waktu sangat penting untuk mengelola penyakit-penyakit ini.</item>
+        <item>Kentang adalah sumber utama karbohidrat dan nutrisi, dikonsumsi di seluruh dunia dalam berbagai bentuk. Kentang penting untuk keamanan pangan dan nutrisi.\n\nPenyakit Umum: Kentang rentan terhadap beberapa penyakit yang dapat secara signifikan mempengaruhi hasil dan kualitasnya.\n\nHawar Daun Akhir: Disebabkan oleh Phytophthora infestans, penyakit ini menghasilkan lesi gelap, basah pada daun dan batang, menyebabkan tanaman cepat mati.\n\nHawar Daun Awal: Disebabkan oleh Alternaria solani, penyakit ini membentuk lesi cincin konsentris pada daun, mengurangi area fotosintesis dan kualitas umbi.\n\nBlackleg: Disebabkan oleh Pectobacterium spp., menyebabkan batang menghitam dan busuk lunak pada umbi, secara signifikan mempengaruhi hasil.\n\nPengelolaan: Pengelolaan yang efektif meliputi penggunaan benih bersertifikat, rotasi tanaman, penggundukan tanah di sekitar tanaman, dan aplikasi fungisida yang diperlukan.</item>
+        <item>Singkong adalah makanan pokok di banyak negara tropis, dikenal karena kemampuannya tumbuh di tanah miskin dan tahan kekeringan. Singkong menyediakan karbohidrat dan nutrisi penting.\n\nPenyakit Umum: Singkong menghadapi beberapa penyakit yang dapat mempengaruhi pertumbuhan dan produktivitasnya.\n\nVirus Mosaik Singkong: Menyebabkan pola mosaik pada daun, pertumbuhan terhambat, dan penurunan hasil umbi.\n\nHawar Bakteri: Disebabkan oleh Xanthomonas axonopodis, menyebabkan lesi basah pada daun, layu, dan mati balik.\n\nAntraknosa: Disebabkan oleh Colletotrichum gloeosporioides, penyakit ini menghasilkan lesi gelap dan cekung pada batang dan daun, menyebabkan defoliasi dan penurunan hasil.\n\nPengelolaan: Menggunakan bahan tanam bebas penyakit, varietas tahan penyakit, sanitasi lapangan yang tepat, dan aplikasi perawatan yang tepat waktu sangat penting untuk mengelola penyakit-penyakit ini.</item>
+        <item>Kedelai digunakan untuk minyak, protein, dan sebagai komponen pakan ternak utama, menjadikannya penting dalam pertanian global. Kedelai kaya akan asam amino esensial dan bermanfaat bagi kesehatan tanah karena fiksasi nitrogen.\n\nPenyakit Umum: Kedelai rentan terhadap beberapa penyakit yang dapat mempengaruhi pertumbuhan dan produktivitasnya.\n\nKarat Kedelai: Disebabkan oleh Phakopsora pachyrhizi, penyakit ini menghasilkan pustula kecil berwarna karat pada daun, menyebabkan defoliasi dan penurunan hasil.\n\nHawar Bakteri: Disebabkan oleh Pseudomonas syringae, penyakit ini membentuk bintik basah pada daun, yang akhirnya menjadi nekrotik.\n\nHawar Downy: Disebabkan oleh Peronospora manshurica, penyakit ini menghasilkan bercak kuning pada daun dengan pertumbuhan berkapas di bagian bawahnya.\n\nPengelolaan: Strategi meliputi penanaman varietas tahan penyakit, rotasi tanaman, dan aplikasi fungisida pada tahap pertumbuhan yang sesuai.</item>
+        <item>Sorgum dikenal karena kemampuannya tumbuh di daerah kering, menjadikannya sumber makanan dan pakan penting di banyak bagian dunia. Sorgum kaya akan karbohidrat, protein, dan mineral.\n\nPenyakit Umum: Sorgum rentan terhadap beberapa penyakit yang dapat mempengaruhi hasil dan kualitasnya.\n\nAntraknosa: Disebabkan oleh Colletotrichum sublineola, penyakit ini menghasilkan lesi bulat pada daun, batang, dan malai, mengurangi fotosintesis dan hasil.\n\nSooty Stripe: Disebabkan oleh Ramulispora sorghi, penyakit ini membentuk garis-garis hitam pada daun, mengurangi area fotosintesis.\n\nHawar Daun: Disebabkan oleh Exserohilum turcicum, menghasilkan lesi memanjang pada daun, menyebabkan kematian daun dini dan penurunan hasil.\n\nPengelolaan: Menggunakan varietas tahan penyakit, rotasi tanaman, dan aplikasi fungisida yang tepat waktu sangat penting untuk mengelola penyakit-penyakit ini.</item>
+        <item>Millet adalah biji-bijian yang kaya nutrisi yang tumbuh baik di daerah kering, memberikan keamanan pangan di banyak negara berkembang. Millet kaya akan protein, serat, dan mineral penting.\n\nPenyakit Umum: Millet menghadapi beberapa penyakit yang dapat mempengaruhi pertumbuhan dan produktivitasnya.\n\nHawar Downy: Disebabkan oleh Sclerospora graminicola, penyakit ini menghasilkan bercak kuning pada daun dengan pertumbuhan berkapas di bagian bawahnya.\n\nSmut: Disebabkan oleh Ustilago spp., penyakit ini menghasilkan massa hitam berdebu yang menggantikan biji.\n\nKarat: Disebabkan oleh Puccinia substriata, penyakit ini membentuk pustula berwarna karat pada daun, mengurangi kapasitas fotosintesis.\n\nPengelolaan: Menanam varietas tahan penyakit, rotasi tanaman, dan aplikasi fungisida pada waktu yang tepat adalah strategi pengelolaan kunci.</item>
+        <item>Jelai digunakan untuk makanan, pakan ternak, dan pembuatan bir, dan telah dibudidayakan selama ribuan tahun. Barley dihargai karena adaptabilitas dan manfaat nutrisinya.\n\nPenyakit Umum: Barley rentan terhadap beberapa penyakit yang dapat mempengaruhi hasil dan kualitasnya.\n\nJamur Tepung: Disebabkan oleh Blumeria graminis, penyakit ini membentuk pertumbuhan jamur putih, seperti tepung pada daun dan batang, menghambat fotosintesis.\n\nBercak Jaring: Disebabkan oleh Pyrenophora teres, penyakit ini menghasilkan lesi berbentuk jaring pada daun, mengurangi area fotosintesis dan kualitas biji.\n\nScald: Disebabkan oleh Rhynchosporium secalis, penyakit ini membentuk lesi basah pada daun, yang menjadi nekrotik dan mengurangi kapasitas fotosintesis.\n\nPengelolaan: Pengelolaan yang efektif termasuk penanaman varietas tahan penyakit, rotasi tanaman, dan aplikasi fungisida pada tahap pertumbuhan yang sesuai.</item>
+        <item>Ubi adalah makanan pokok di banyak daerah tropis, menyediakan sumber karbohidrat dan vitamin yang signifikan. Ubi serbaguna dalam penggunaan kuliner dan penting untuk keamanan pangan.\n\nPenyakit Umum: Ubi rentan terhadap beberapa penyakit yang dapat mempengaruhi pertumbuhan dan produktivitasnya.\n\nVirus Mosaik Ubi: Menyebabkan pola mosaik pada daun, pertumbuhan terhambat, dan penurunan hasil umbi.\n\nAntraknosa: Disebabkan oleh Colletotrichum gloeosporioides, penyakit ini menghasilkan lesi gelap dan cekung pada batang dan daun, menyebabkan defoliasi dan penurunan hasil.\n\nBusuk Kering: Disebabkan oleh Botryodiplodia theobromae, penyakit ini menyebabkan umbi membusuk kering, yang secara signifikan mempengaruhi hasil dan masa simpan.\n\nPengelolaan: Menggunakan bahan tanam bebas penyakit, rotasi tanaman, dan aplikasi perawatan yang tepat waktu sangat penting untuk mengelola penyakit-penyakit ini.</item>
+    </string-array>
+    <string name="get_started">Ayo Mulai</string>
+    <string name="logout">Keluar</string>
+    <string name="title">Judul</string>
+    <string name="okay">Baiklah</string>
+    <string name="register_error">Gagal mendaftarkan akun anda</string>
+    <string name="articles">Artikel</string>
+    <string name="choose_theme">Pilih Tema</string>
+    <string name="history_subheading">Periksa apa yang telah Anda diagnosis pada tanaman Anda sebelumnya</string>
+    <string name="home_card_diagnose">Ada masalah dengan tanaman anda?</string>
+    <string name="don_t_have_an_account">Belum punya akun?</string>
+    <string name="register_here">Daftar disini</string>
 </resources>

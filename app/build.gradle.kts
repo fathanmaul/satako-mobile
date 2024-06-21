@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id ("androidx.navigation.safeargs")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -15,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"${project.findProperty("BASE_URL")}\"")
     }
 
     buildTypes {
@@ -33,6 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -43,6 +51,9 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    //flexbox
+    implementation (libs.flexbox)
+
     //glide
     implementation(libs.glide)
 
@@ -52,8 +63,44 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    //testing
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    //navigation
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
+
+    // Espresso core
+    androidTestImplementation (libs.androidx.espresso.core)
+    androidTestImplementation (libs.androidx.espresso.intents)
+    androidTestImplementation (libs.androidx.espresso.contrib)
+    implementation(libs.androidx.espresso.idling.resource)
+
+    // JUnit
+    testImplementation (libs.junit)
+    androidTestImplementation (libs.androidx.junit)
+
+    // Fragment testing
+    debugImplementation (libs.androidx.fragment.testing)
+
+    // AndroidX Test - Core library
+    androidTestImplementation (libs.androidx.core)
+    androidTestImplementation (libs.androidx.rules)
+    androidTestImplementation (libs.androidx.runner)
+
+    //ucrop
+    implementation (libs.ucrop)
+
+    //cameraX
+    implementation (libs.androidx.camera.core)
+    implementation (libs.androidx.camera.camera2)
+    implementation (libs.androidx.camera.lifecycle)
+    implementation (libs.androidx.camera.video)
+
+    implementation (libs.androidx.camera.view)
+    implementation (libs.androidx.camera.extensions)
+
+    // Splash API
+    implementation (libs.androidx.core.splashscreen)
 }

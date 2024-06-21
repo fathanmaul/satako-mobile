@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Satakomobile.Splash" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@drawable/splash_screen_dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.Satakomobile</item>
+    </style>
+</resources>

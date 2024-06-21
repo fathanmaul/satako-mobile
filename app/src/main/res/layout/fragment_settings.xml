@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="24dp"
+    tools:context=".presentation.profile.settings.SettingsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="100dp">
+
+        <LinearLayout
+            android:id="@+id/heading_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                style="@style/BackButton"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:contentDescription="@string/back_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bi_arrow_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/settings_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/manrope_extrabold"
+                android:text="@string/settings"
+                android:textSize="38sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_themes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="29dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading_container"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:contentDescription="@string/themes"
+                android:src="@drawable/round_wb_sunny_24"
+                app:tint="?attr/item_foreground" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/themes"
+                android:textColor="?attr/item_foreground"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/btn_language"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="?android:attr/selectableItemBackground"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingHorizontal="28dp"-->
+<!--            android:paddingVertical="29dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/btn_themes"-->
+<!--            tools:ignore="UseCompoundDrawables">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="31dp"-->
+<!--                android:layout_height="31dp"-->
+<!--                android:contentDescription="@string/language"-->
+<!--                android:src="@drawable/round_language_24"-->
+<!--                app:tint="?attr/item_foreground" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="21dp"-->
+<!--                android:fontFamily="@font/manrope_bold"-->
+<!--                android:text="@string/language"-->
+<!--                android:textColor="?attr/item_foreground"-->
+<!--                android:textSize="18sp" />-->
+<!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/btn_clear_cache"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="29dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_themes"
+            tools:ignore="UseCompoundDrawables">
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap"
+                app:justifyContent="space_between"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:contentDescription="@string/clear_cache"
+                        android:src="@drawable/baseline_cleaning_services_24"
+                        app:tint="?attr/item_foreground" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="21dp"
+                        android:fontFamily="@font/manrope_bold"
+                        android:text="@string/clear_cache"
+                        android:textColor="?attr/item_foreground"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/cache_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="21dp"
+                        android:fontFamily="@font/manrope_light"
+                        android:text="@string/dash"
+                        android:textColor="?attr/item_foreground"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

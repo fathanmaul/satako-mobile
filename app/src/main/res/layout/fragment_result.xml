@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.home.diagnose.result.ResultFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="35dp"
+            android:paddingBottom="100dp">
+
+            <LinearLayout
+                android:id="@+id/heading_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/back_button"
+                    style="@style/BackButton"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/back_button"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bi_arrow_left"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/result_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/manrope_extrabold"
+                    android:text="@string/result"
+                    android:textSize="38sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/result_subheading"
+                    style="@style/TextSubHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/result_subheading"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/result_image_container"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/heading_container">
+
+                <ImageView
+                    android:id="@+id/result_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:foreground="@drawable/gradient"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/home_card_image" />
+
+                <TextView
+                    android:id="@+id/disease_name_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/date_text_container"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginHorizontal="24dp"
+                    android:alpha="0"
+                    android:fontFamily="@font/manrope_extrabold"
+                    android:text="@string/disease_name"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    tools:alpha="100" />
+
+                <LinearLayout
+                    android:id="@+id/date_text_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginBottom="18dp"
+                    android:alpha="0"
+                    android:orientation="horizontal"
+                    tools:alpha="100">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:fontFamily="@font/manrope_regular"
+                        android:text="@string/predicted_on"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/date_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_regular"
+                        android:text="@string/example_date_time"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/description_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:alpha="0"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/result_image_container"
+                tools:alpha="100">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/description"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/description_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/example_lorem" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/causes_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description_container"
+                tools:alpha="100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/causes"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/causes_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/example_lorem" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/solution_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/causes_container"
+                tools:alpha="100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="@string/solution"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/solution_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/manrope_light"
+                    android:text="@string/example_lorem" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

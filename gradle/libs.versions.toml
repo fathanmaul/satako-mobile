@@ -1,23 +1,54 @@
 [versions]
 agp = "8.3.2"
+cameraxVersion = "1.4.0-beta01"
+core = "1.5.0"
+coreSplashscreen = "1.0.1"
+espressoIntents = "3.5.1"
+flexbox = "3.0.0"
+fragmentTesting = "1.5.7"
 glide = "4.16.0"
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
-lifecycleRuntimeKtx = "2.8.0"
+appcompat = "1.7.0"
+lifecycleRuntimeKtx = "2.8.1"
 loggingInterceptor = "4.11.0"
 material = "1.12.0"
-activity = "1.8.0"
+activity = "1.9.0"
 constraintlayout = "2.1.4"
+navigationSafeArgsGradlePlugin = "2.7.7"
+playServicesAuth = "21.2.0"
 retrofit = "2.9.0"
+datastoreCoreAndroid = "1.1.1"
+navigationFragmentKtx = "2.7.7"
+navigationUiKtx = "2.7.7"
+runner = "1.5.2"
+ucrop = "2.2.8"
+junitJunit = "4.12"
+espressoIdlingResource = "3.5.1"
 
 [libraries]
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraxVersion" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraxVersion" }
+androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "cameraxVersion" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraxVersion" }
+androidx-camera-video = { module = "androidx.camera:camera-video", version.ref = "cameraxVersion" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraxVersion" }
+androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastoreCoreAndroid" }
+androidx-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espressoIntents" }
+androidx-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espressoIntents" }
+androidx-fragment-testing = { module = "androidx.fragment:fragment-testing", version.ref = "fragmentTesting" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
+androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
+androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -28,6 +59,11 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
+androidx-espresso-idling-resource = { group = "androidx.test.espresso", name = "espresso-idling-resource", version.ref = "espressoIdlingResource" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

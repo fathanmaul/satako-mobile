@@ -1,7 +1,85 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Satakomobile" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurfaceContainer">@color/green_950</item>
+        <item name="colorSecondaryContainer">@color/green_600</item>
+        <item name="colorOnSecondaryContainer">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceContainerHigh">@color/green_50</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+
+        <item name="edit_text_background">@color/edit_text_background_dark</item>
+        <item name="item_foreground">@color/white</item>
+        <item name="card_tonal_background">@color/green_950</item>
+        <item name="card_tonal_foreground">@color/white</item>
+        <item name="header_container_background">@color/green_800</item>
+        <item name="sheet_container_background">@color/neutral_800</item>
+
+        <item name="android:statusBarColor">
+            @color/background_dark
+        </item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="background_card_item">@color/card_dark</item>
+        <item name="splash_icon_color">@color/white</item>
+
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="window_background">@color/background_dark</item>
     </style>
+
+    <style name="Base.Widget.AppCompat.TextView" parent="Base.Theme.Satakomobile">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BackButton" parent="Widget.AppCompat.ImageButton">
+        <item name="tint">@color/green_500</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="TextSubHeading" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="PrimaryButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">15dp</item>
+        <item name="android:drawableTint">
+            @color/green_900
+        </item>
+        <item name="fontFamily">
+            @font/manrope_semibold
+        </item>
+        <item name="android:textColor">@color/green_900</item>
+    </style>
+
+    <style name="DangerButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">15dp</item>
+        <item name="backgroundTint">@color/danger</item>
+        <item name="android:drawableTint">
+            @color/white
+        </item>
+        <item name="fontFamily">
+            @font/manrope_semibold
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorOnPrimary">
+            @color/white
+        </item>
+        <item name="android:background">@color/neutral_700</item>
+        <item name="colorSurfaceContainerHigh">@color/green_50</item>
+        <item name="colorOnSurface">@color/neutral_900</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text
+        </item>
+    </style>
+
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/placeholderFragment2">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="dev.capstone.satako_mobile.presentation.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="dev.capstone.satako_mobile.presentation.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/home_fragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="dev.capstone.satako_mobile.presentation.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="dev.capstone.satako_mobile.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/history_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_diagnoseFragment"
+            app:destination="@id/diagnoseFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_home_fragment_to_profileFragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_home_fragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/history_fragment"
+        android:name="dev.capstone.satako_mobile.presentation.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_history_fragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/diagnoseFragment"
+        android:name="dev.capstone.satako_mobile.presentation.home.diagnose.DiagnoseFragment"
+        android:label="fragment_diagnose"
+        tools:layout="@layout/fragment_diagnose">
+        <action
+            android:id="@+id/action_diagnoseFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="dev.capstone.satako_mobile.presentation.home.diagnose.result.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result">
+        <argument
+            android:name="image_uri"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="PredictResult"
+            app:argType="dev.capstone.satako_mobile.data.response.DataPredict"
+            app:nullable="true" />
+        <argument
+            android:name="History"
+            app:argType="dev.capstone.satako_mobile.data.response.HistoryItem"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="dev.capstone.satako_mobile.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_profile_fragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_profile_fragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dev.capstone.satako_mobile.presentation.profile.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="dev.capstone.satako_mobile.presentation.articles.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article">
+        <action
+            android:id="@+id/action_articleFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailArticleFragment"
+        android:name="dev.capstone.satako_mobile.presentation.articles.detail.DetailArticleFragment"
+        android:label="fragment_detail_article"
+        tools:layout="@layout/fragment_detail_article">
+        <argument
+            android:name="article_item"
+            app:argType="dev.capstone.satako_mobile.data.model.dummy.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeholderFragment2"
+        android:name="dev.capstone.satako_mobile.presentation.splash.PlaceholderFragment"
+        android:label="fragment_placeholder"
+        tools:layout="@layout/fragment_placeholder" >
+        <action
+            android:id="@+id/action_placeholderFragment2_to_home_fragment"
+            app:destination="@id/home_fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/placeholderFragment2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_placeholderFragment2_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/placeholderFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
