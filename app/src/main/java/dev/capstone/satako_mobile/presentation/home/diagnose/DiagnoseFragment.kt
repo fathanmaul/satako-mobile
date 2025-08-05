@@ -147,7 +147,7 @@ class DiagnoseFragment : Fragment() {
 
                 val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
                 val multipartBody = MultipartBody.Part.createFormData(
-                    "file",
+                    "image",
                     imageFile.name,
                     requestImageFile
                 )
